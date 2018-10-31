@@ -1,5 +1,19 @@
 # Momentum
 
+# Code Practices
+### CSS
+* we use SASS/SCSS 
+  * the scss flavor.
+* we use BEM for our CSS classes
+* styles for each component should be in their own self-contained styles folder
+* constants like colors and heights that need to be known elsewhere should be in `./src/styles/constants.scss`
+
+### React
+* components will have a `view` for their presentational part.
+  * their `index.js` will be the "Container" component, which will wrap it in a router or redux HOC
+* the main content pages will be in `./routes/pages`
+* import components by using `import componentName from 'components/{componentName}';` because the `index.js` will automatically be used as the imported file
+
 # Requirements
 Download Homebrew
 ```bash
