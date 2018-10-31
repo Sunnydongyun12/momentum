@@ -1,0 +1,16 @@
+@import 'src/styles/constants.scss';
+
+.AccountRow {
+  @include navRow();
+  background-color: $sideNavSpBg-color;
+
+  &__icon {
+    @include navRowIcon(20px);
+  }
+
+  &__first-name {
+    user-select: none;
+    color: #F4AFBE;
+    margin: 0;
+  }
+}

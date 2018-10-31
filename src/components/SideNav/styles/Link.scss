@@ -1,0 +1,42 @@
+@import 'src/styles/constants.scss';
+
+.Link {
+  @include navRow();
+  cursor: pointer;
+  font-weight: 300;
+
+  &:hover, &:focus {
+    background-color: rgb(236, 105, 93);
+    transition: background-color 200ms, border 200ms;
+
+    // text when Link is being hovered over
+    .Link__text {
+      color: white;
+    }
+  }
+
+  &--active {
+    background-color: rgb(136, 49, 41);
+
+    &:hover, &:focus {
+      background-color: rgb(136, 49, 41);
+    }
+
+    // text when Link is active
+    .Link__text {
+      color: white;
+    }
+  }
+
+  &__icon {
+    @include navRowIcon(30px);
+  }
+  
+  &__text {
+    user-select: none;
+    grid-column: 2 / 3;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 200ms;
+  }
+}
