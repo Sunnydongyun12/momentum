@@ -1,0 +1,53 @@
+@import 'src/styles/constants.scss';
+
+.TopNav {
+  position: sticky;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  top: 0;
+  background-color: $sideNavSpBg-color;
+  width: 100%;
+  height: $topNav-height;
+  z-index: 1;
+
+  &__hamburger {
+    display: none;
+  }
+
+  &__project-name {
+    align-self: center;
+    justify-self: center;
+    color: $eggshell;
+    font-weight: 300;
+    font-size: 1.8rem;
+  }
+
+  &__hamburger {
+    display: inline-block;
+    margin: 8px 0 0 10px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    color: #fff;
+    text-align: center;
+    justify-self: center;
+
+    &:hover {
+      .TopNav__hamburger__row {
+        border-bottom: solid rgba(255, 255, 255, 0.7) 3px;
+        transition: all 200ms;
+      }
+    }
+
+    &__row {
+      display: block;
+      width: 83%;
+      padding-bottom: 6px;
+      border-bottom: solid #fff 3px;
+    }
+  }
+
+  &__project-name {
+    margin-left: -30px;
+  }
+}

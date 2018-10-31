@@ -1,0 +1,15 @@
+{
+  "files.exclude": {
+    ".vscode": true,
+    "node_modules": true,
+    "**/*.css": true,
+    "src/registerServiceWorker.js": true
+  },
+  "search.exclude": {
+    "registerServiceWorker.js": true,
+    "**/*.svg": true,
+    "public": true,
+    "package.json": true,
+    "yarn.lock": true,
+  }
+}
