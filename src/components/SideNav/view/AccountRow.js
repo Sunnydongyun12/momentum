@@ -10,7 +10,7 @@ class AccountRow extends React.Component {
 
     return (
       <NavLink
-        to="home"
+        to="/home"
         onClick={onClick}
       >
         <div className="AccountRow">
