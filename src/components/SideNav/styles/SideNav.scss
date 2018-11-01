@@ -3,7 +3,7 @@
 .SideNav {
   position: fixed;
   display: grid;
-  grid-template-rows: 50px repeat(6, $sideNavRow-height);
+  grid-template-rows: 100px repeat(6, $sideNavRow-height);
   align-items: center;
   height: 100vh;
   width: $sideNav-width;

@@ -1,0 +1,12 @@
+@import 'src/styles/constants.scss';
+
+.Home {
+  display: grid;
+  grid-template-rows: $topNav-height 1fr;
+
+  &__content {
+    box-sizing: border-box;
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}

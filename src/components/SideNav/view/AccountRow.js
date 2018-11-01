@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import '../styles/AccountRow.css';
 import circle from 'components/assets/circle.svg';
 
@@ -8,16 +9,20 @@ class AccountRow extends React.Component {
     const { firstName, onClick } = this.props;
 
     return (
-      <div className="AccountRow">
-        <img
-          className="AccountRow__icon"
-          draggable="false"
-          src={circle}
-          alt={firstName}
-          onClick={onClick}
-        />
-        <p className="AccountRow__first-name">{firstName}</p>
-      </div>
+      <NavLink
+        to="home"
+        onClick={onClick}
+      >
+        <div className="AccountRow">
+          <img
+            className="AccountRow__icon"
+            draggable="false"
+            src={circle}
+            alt={firstName}
+          />
+          <p className="AccountRow__first-name">{firstName}</p>
+        </div>
+      </NavLink>
     );
   }
 }
