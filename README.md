@@ -1,18 +1,27 @@
 # Momentum
 
 # Code Practices
-### CSS
-* we use SASS/SCSS 
-  * the scss flavor.
-* we use BEM for our CSS classes
-* styles for each component should be in their own self-contained styles folder
-* constants like colors and heights that need to be known elsewhere should be in `./src/styles/constants.scss`
+## CSS
+* use SASS/SCSS, the scss flavor, guide [here](https://sass-lang.com/guide)
+* use BEM for CSS classes, more info [here](http://getbem.com/)
+* styles for each component should be in their own self-contained styles folder, `Component/styles/Component.scss`
+* constants like colors and heights that need to be known elsewhere should be in `src/styles/constants.scss`
 
-### React
-* components will have a `view` for their presentational part.
-  * their `index.js` will be the "Container" component, which will wrap it in a router or redux HOC
-* the main content pages will be in `./routes/pages`
-* import components by using `import componentName from 'components/{componentName}';` because the `index.js` will automatically be used as the imported file
+## React
+https://reactjs.org/docs/hello-world.html
+* components should have their presentational portions in `Component/view/Component.js`
+  * `Component/index.js` will act as the container component, more info [here](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
+* import components by using `import ComponentName from 'components/ComponentName';` because the `index.js` will automatically be used as the imported file
+
+### React Router
+https://reacttraining.com/react-router/web/guides/quick-start
+* `src/routes/index.js` is the entry point of the application, so the routes are defined here as well
+* `routes/pages` is where main content pages should go
+
+### Redux
+https://redux.js.org/
+* look at the `index.js` of the components and the `src/redux` folder to get a grasp
+* follow the tutorial anyway, though
 
 # Requirements
 Download Homebrew

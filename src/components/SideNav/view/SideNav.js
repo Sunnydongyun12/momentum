@@ -18,7 +18,7 @@ class SideNav extends React.Component {
     );
 
     const linkProps = [
-      { name: 'Settings', path: '/settings', iconName: 'settings' },
+      { name: 'Preferences', path: '/preferences', iconName: 'settings' },
       { name: 'Logout', path: '/logout', iconName: 'lock' },
     ];
 
