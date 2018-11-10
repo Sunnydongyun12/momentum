@@ -11,11 +11,12 @@ import Collapse from "@material-ui/core/Collapse";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import red from "@material-ui/core/colors/red";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import ButtonBase from "@material-ui/core/ButtonBase";
+import { Redirect } from "react-router-dom";
 
 const styles = theme => ({
   card: {
@@ -43,8 +44,11 @@ const styles = theme => ({
     transform: "rotate(180deg)"
   },
   avatar: {
-    // 176, 66, 53
     backgroundColor: "#b04235"
+  },
+  cardButton: {
+    display: "block",
+    textAlign: "initial"
   }
   // cardstyle: { flex: 1, height: 50 }
 });
@@ -52,7 +56,19 @@ const styles = theme => ({
 class PCard extends React.Component {
   state = {
     expanded: false,
-    i_title: "ititle"
+    i_title: "ititle",
+    redirect: false
+  };
+
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    });
+  };
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to="/target" />;
+    }
   };
 
   handleExpandClick = () => {
@@ -66,52 +82,54 @@ class PCard extends React.Component {
       <Card className={classes.card}>
         <CardHeader
           avatar={
-            <Avatar aria-label="Recipe" className={classes.avatar}>
+            <Avatar aria-label="Provider" className={classes.avatar}>
               P
             </Avatar>
           }
-          action={
-            <IconButton>
-              <MoreVertIcon />
-            </IconButton>
-          }
+          // action={
+          //   <IconButton>
+          //     <MoreVertIcon />
+          //   </IconButton>
+          // }
           title={this.props.title}
           subheader="Nov 14, 2018"
         />
-        <CardMedia
-          className={classes.media}
-          image={this.props.image}
-          title={this.state.i_title}
-        />
-        <CardContent>
-          <Typography component="p">{this.props.content}</Typography>
-        </CardContent>
-        <CardActions className={classes.actions} disableActionSpacing>
-          <IconButton aria-label="Add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="Share">
-            <ShareIcon />
-          </IconButton>
-          <IconButton
-            className={classnames(classes.expand, {
-              [classes.expandOpen]: this.state.expanded
-            })}
-            onClick={this.handleExpandClick}
-            aria-expanded={this.state.expanded}
-            aria-label="Show more"
-          >
-            <ExpandMoreIcon />
-          </IconButton>
-        </CardActions>
-        <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+        <ButtonBase className={classes.cardButton} onClick={this.setRedirect}>
+          <CardMedia
+            className={classes.media}
+            image={this.props.image}
+            title={this.state.i_title}
+          />
           <CardContent>
-            <Typography paragraph>More information:</Typography>
-            <Typography paragraph>My place is.....</Typography>
-            <Typography paragraph>Detail detail detail</Typography>
-            <Typography>and more.</Typography>
+            <Typography component="p">{this.props.content}</Typography>
           </CardContent>
-        </Collapse>
+          <CardActions className={classes.actions} disableActionSpacing>
+            <IconButton aria-label="Add to favorites">
+              <FavoriteIcon />
+            </IconButton>
+            <IconButton aria-label="Share">
+              <ShareIcon />
+            </IconButton>
+            <IconButton
+              className={classnames(classes.expand, {
+                [classes.expandOpen]: this.state.expanded
+              })}
+              onClick={this.handleExpandClick}
+              aria-expanded={this.state.expanded}
+              aria-label="Show more"
+            >
+              <ExpandMoreIcon />
+            </IconButton>
+          </CardActions>
+          <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+            <CardContent>
+              <Typography paragraph>More information:</Typography>
+              <Typography paragraph>My place is.....</Typography>
+              <Typography paragraph>Detail detail detail</Typography>
+              <Typography>and more.</Typography>
+            </CardContent>
+          </Collapse>
+        </ButtonBase>
       </Card>
     );
   }
