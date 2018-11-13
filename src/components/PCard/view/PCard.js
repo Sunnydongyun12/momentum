@@ -66,7 +66,7 @@ class PCard extends React.Component {
     });
   };
   renderRedirect = () => {
-    window.location = '/providers/2';
+    this.props.history.push('/providers/2');
   };
 
   handleExpandClick = () => {
@@ -74,7 +74,7 @@ class PCard extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, history } = this.props;
 
     return (
       <Card className={classes.card}>

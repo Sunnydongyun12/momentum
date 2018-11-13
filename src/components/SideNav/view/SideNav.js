@@ -24,7 +24,7 @@ class SideNav extends React.Component {
     return (
       <div>
         <nav className={navClasses} draggable="false">
-          <AccountRow firstName="MyName" onClick={hideSideNav} />
+          <AccountRow firstName="Username" onClick={hideSideNav} />
           {linkProps.map(props => (
             <Link
               {...props}

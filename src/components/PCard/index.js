@@ -1,3 +1,4 @@
-import PCard from "./view/PCard";
+import PCard from './view/PCard';
+import { withRouter } from 'react-router-dom';
 
-export default PCard;
+export default withRouter(PCard);
