@@ -86,19 +86,12 @@ CreatePatientForm.propTypes = {
 };
 
 const formikForm = withFormik({
-  mapPropsToValues({ zipCode, lastName }) {
+  mapPropsToValues({ zipCode }) {
     return {
       zipCode: zipCode || '',
-      lastName: lastName || '',
     };
   },
   validationSchema: yup.object().shape({
-    firstName: yup
-      .string()
-      .required('First name is required.'),
-    lastName: yup
-      .string()
-      .required('Last name is required.'),
   }),
   handleSubmit(values, {
     setErrors, resetForm, setSubmitting, props: { goBack },
