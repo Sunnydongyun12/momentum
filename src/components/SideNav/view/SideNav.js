@@ -1,24 +1,24 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "../styles/SideNav.css";
-import classNames from "classnames";
-import Link from "./Link";
-import AccountRow from "./AccountRow";
-import { preventFocus } from "lib/accessibilityUtils";
+import React from 'react';
+import PropTypes from 'prop-types';
+import '../styles/SideNav.css';
+import classNames from 'classnames';
+import Link from './Link';
+import AccountRow from './AccountRow';
+import { preventFocus } from 'lib/accessibilityUtils';
 
 class SideNav extends React.Component {
   render() {
     const { sideNavShown, hideSideNav } = this.props;
-    const navClasses = classNames("SideNav", {
-      "SideNav--shown": sideNavShown
+    const navClasses = classNames('SideNav', {
+      'SideNav--shown': sideNavShown,
     });
 
     const backdropClass = classNames({ SideNav__backdrop: sideNavShown });
 
     const linkProps = [
-      { name: "Preferences", path: "/preferences", iconName: "settings" },
-      { name: "Logout", path: "/logout", iconName: "lock" },
-      { name: "Solution Matching", path: "/solutionlist", iconName: "" }
+      { name: 'Preferences', path: '/preferences', iconName: 'settings' },
+      { name: 'Find Providers', path: '/providers', iconName: 'box' },
+      { name: 'Logout', path: '/logout', iconName: 'lock' },
     ];
 
     return (
@@ -44,7 +44,7 @@ class SideNav extends React.Component {
 
 SideNav.propTypes = {
   sideNavShown: PropTypes.bool,
-  hideSideNav: PropTypes.func
+  hideSideNav: PropTypes.func,
 };
 
 export default SideNav;

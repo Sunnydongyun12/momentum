@@ -1,14 +1,18 @@
-import React from "react";
-import CTABtn from "components/CTABtn";
-import "../styles/Home.css";
-import PCardList from "components/PCardList";
+import React from 'react';
+import CTABtn from 'components/CTABtn';
+import '../styles/Home.css';
+import PCardList from 'components/PCardList';
 
 export const Home = () => {
   return (
     <div className="Home__content">
-      <h1>Home page</h1>
-      {/* <PCardList /> */}
-      <CTABtn className="CTABtn--dark">setting</CTABtn>
+      <h1>Home</h1>
+      <h2 style={{ fontWeight: 400 }}>Your cheap and easy storage solution provider. Follow these simple steps to get you up and running.</h2>
+      <p style={{ fontSize: '1.3em', fontWeight: 300 }}>1. Click on the sidebar.</p>
+      <p style={{ fontSize: '1.3em', fontWeight: 300 }}>2. Set your preferences.</p>
+      <p style={{ fontSize: '1.3em', fontWeight: 300 }}>3. Find a solution provider.</p>
+      <p style={{ fontSize: '1.3em', fontWeight: 300 }}>4. Book.</p>
+      <p style={{ fontSize: '1.3em', fontWeight: 300 }}>5. Done!</p>
     </div>
   );
 };

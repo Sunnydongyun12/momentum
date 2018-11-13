@@ -1,0 +1,41 @@
+@import 'src/styles/constants.scss';
+
+.Form {
+  margin: 2em 0;
+
+  &__field {
+    display: flex;
+    flex-flow: column-reverse;
+  }
+
+  &__label {
+    text-transform: uppercase;
+    margin-top: 20px;
+    font-size: 0.8em;
+    margin-right: 10px;
+  }
+
+  &__input {
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px rgb(177, 177, 177) solid;
+    padding: 0.2em;
+    margin-bottom: 5px;
+    max-width: 50%;
+    height: 40px;
+    cursor: text;
+  }
+
+  &__input:focus,  {
+    border-color: black;
+    outline: 0;
+    transition: all 0.2s;
+  }
+
+  &__button-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}

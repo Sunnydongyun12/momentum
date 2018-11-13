@@ -1,74 +1,72 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import classnames from "classnames";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import ButtonBase from "@material-ui/core/ButtonBase";
-import { Redirect } from "react-router-dom";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import classnames from 'classnames';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Collapse from '@material-ui/core/Collapse';
+import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareIcon from '@material-ui/icons/Share';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import ButtonBase from '@material-ui/core/ButtonBase';
+import { Redirect } from 'react-router-dom';
 
 const styles = theme => ({
   card: {
     maxWidth: 400,
-    minHeight: 420
+    minHeight: 420,
   },
   media: {
     height: 0,
-    paddingTop: "56.25%" // 16:9
+    paddingTop: '56.25%', // 16:9
   },
   actions: {
-    display: "flex"
+    display: 'flex',
   },
   expand: {
-    transform: "rotate(0deg)",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest
+    transform: 'rotate(0deg)',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
     }),
-    marginLeft: "auto",
-    [theme.breakpoints.up("sm")]: {
-      marginRight: -8
-    }
+    marginLeft: 'auto',
+    [theme.breakpoints.up('sm')]: {
+      marginRight: -8,
+    },
   },
   expandOpen: {
-    transform: "rotate(180deg)"
+    transform: 'rotate(180deg)',
   },
   avatar: {
-    backgroundColor: "#b04235"
+    backgroundColor: '#b04235',
   },
   cardButton: {
-    display: "block",
-    textAlign: "initial"
-  }
+    display: 'block',
+    textAlign: 'initial',
+  },
   // cardstyle: { flex: 1, height: 50 }
 });
 
 class PCard extends React.Component {
   state = {
     expanded: false,
-    i_title: "ititle",
-    redirect: false
+    i_title: 'ititle',
+    redirect: false,
   };
 
   setRedirect = () => {
     this.setState({
-      redirect: true
+      redirect: true,
     });
   };
   renderRedirect = () => {
-    if (this.state.redirect) {
-      return <Redirect to="/target" />;
-    }
+    window.location = '/providers/2';
   };
 
   handleExpandClick = () => {
@@ -94,7 +92,7 @@ class PCard extends React.Component {
           title={this.props.title}
           subheader="Nov 14, 2018"
         />
-        <ButtonBase className={classes.cardButton} onClick={this.setRedirect}>
+        <ButtonBase className={classes.cardButton} onClick={this.renderRedirect}>
           <CardMedia
             className={classes.media}
             image={this.props.image}
@@ -112,7 +110,7 @@ class PCard extends React.Component {
             </IconButton>
             <IconButton
               className={classnames(classes.expand, {
-                [classes.expandOpen]: this.state.expanded
+                [classes.expandOpen]: this.state.expanded,
               })}
               onClick={this.handleExpandClick}
               aria-expanded={this.state.expanded}
@@ -136,7 +134,7 @@ class PCard extends React.Component {
 }
 
 PCard.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(PCard);
