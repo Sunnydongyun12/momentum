@@ -7,6 +7,7 @@
     "@material-ui/icons": "^3.0.1",
     "classnames": "^2.2.6",
     "formik": "^1.3.1",
+    "gh-pages": "^2.0.1",
     "node-sass-chokidar": "^1.3.4",
     "npm-run-all": "^4.1.3",
     "react": "^16.6.0",
@@ -27,7 +28,9 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint ./src",
-    "fix": "eslint --fix ./src"
+    "fix": "eslint --fix ./src",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,5 +40,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "homepage": "http://mattkhan.github.io/momentum"
 }
