@@ -1,0 +1,45 @@
+.PCardList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  // justify-items: center;
+  // align-items: center;
+  grid-column-gap: 20px;
+  grid-row-gap: 2em;
+}
+
+@media (max-width: 580px) {
+  .PCardList {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    // justify-items: center;
+    // align-items: center;
+    grid-column-gap: 20px;
+    grid-row-gap: 2em;
+  } 
+}
+
+@media (min-width: 1024px) {
+  .PCardList {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    // justify-items: center;
+    // align-items: center;
+    grid-column-gap: 20px;
+    grid-row-gap: 2em;
+  }
+}
+
+@media (min-width: 1700px) {
+  .PCardList {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    // justify-items: center;
+    // align-items: center;
+    grid-column-gap: 20px;
+    grid-row-gap: 2em;
+  } 
+}

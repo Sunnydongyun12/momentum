@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 // import CTABtn from "components/CTABtn";
-import "../styles/SolutionList.css";
-import PCardList from "components/PCardList";
+import '../styles/SolutionList.css';
+import PCardList from 'components/PCardList';
 
 export const SolutionList = () => {
   return (

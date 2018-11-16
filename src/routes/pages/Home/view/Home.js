@@ -2,8 +2,11 @@ import React from 'react';
 import CTABtn from 'components/CTABtn';
 import '../styles/Home.css';
 import PCardList from 'components/PCardList';
+import ProviderCard from 'components/ProviderCard';
 
 export const Home = () => {
+  const description = 'Sample description. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...';
+  
   return (
     <div className="Home__content">
       <h1>Home</h1>
@@ -13,6 +16,7 @@ export const Home = () => {
       <p style={{ fontSize: '1.3em', fontWeight: 300 }}>3. Find a solution provider.</p>
       <p style={{ fontSize: '1.3em', fontWeight: 300 }}>4. Book.</p>
       <p style={{ fontSize: '1.3em', fontWeight: 300 }}>5. Done!</p>
+      <ProviderCard description={description} imgName="test" zipCode="55555"/>
     </div>
   );
 };
