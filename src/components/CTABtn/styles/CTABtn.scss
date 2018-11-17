@@ -58,6 +58,35 @@
     }
   }
 
+  &--outline {
+    color: black;
+    background-color: #fff;
+    border: 1px solid #23272b;
+
+    &:hover {
+      border: 1px solid #B04235;
+      color: #B04235;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.5);
+    }
+
+    &:disabled {
+      color: #fff;
+      background-color: #343a40;
+    }
+
+    &:not(:disabled):active {
+      color: #fff;
+      background-color: #1d2124;
+    }
+
+    &:not(:disabled):active:focus {
+      box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.5);
+    }
+  }
+
   &--green {
     color: #fff;
     background-color: green;

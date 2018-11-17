@@ -2,14 +2,23 @@
 
 .SolutionList {
   display: grid;
-  grid-template-rows: $topNav-height 1fr;
+  grid-template-rows: 1fr;
 
   &__content {
+    margin-top: 2em;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+
     background: $eggshell;
     box-sizing: border-box;
-    padding-bottom: 100px;
+    padding-bottom: 200px;
     padding: 0 40px;
-    overflow: hidden;
     max-width: 100vw;
+    overflow: auto;
+  }
+
+  &__filter {
+    display: grid;
+    grid-template-rows: auto 1fr;
   }
 }

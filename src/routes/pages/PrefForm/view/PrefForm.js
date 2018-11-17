@@ -45,31 +45,34 @@ const CreatePatientForm = ({ values, errors, touched, isSubmitting }) => (
       placeholder="ft"
       style={{ width: '40px' }}
     />
-    <p style={{ fontSize: '1.3em' }} >Please enter the duration of time you would like to store your belongings.</p>
-    <div className="Form__field">
-      <Field
-        className="Form__input"
-        type="date"
-        name="from"
-        placeholder=""
-        style={{ width: '100px' }}
-      />
-      <label class="Form__label" for="from">From</label>
-    </div>
-    <div className="Form__field">
-      <Field
-        className="Form__input"
-        type="date"
-        name="to"
-        placeholder=""
-        style={{ width: '100px' }}
-      />
-      <label class="Form__label" for="to">To</label>
+    <div style={{ fontSize: '1.3em' }} >DURATION</div>
+    <div className="Form__date">
+      <div className="Form__field">
+        <Field
+          className="Form__input"
+          type="date"
+          name="from"
+          placeholder=""
+          style={{ width: 'auto', display: 'inline' }}
+        />
+        <label class="Form__label" for="from">Start Date</label>
+      </div>
+      <div className="Form__field">
+        <Field
+          className="Form__input"
+          type="date"
+          name="to"
+          placeholder=""
+          style={{ width: 'auto', display: 'inline' }}
+        />
+        <label class="Form__label" for="to" >End Date</label>
+      </div>
     </div>
     <div className="Form__button-container">
       <CTABtn
         className="CTABtn--dark Form__button"
         type="submit"
+        style={{ width: '100%' }}
       >
         Submit
       </CTABtn>

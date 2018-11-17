@@ -20,12 +20,12 @@ class ProviderCard extends React.Component {
             <FontAwesomeIcon icon="map-marker-alt" style={{ marginRight: '10px' }}/>
            Zip Code: {zipCode}
           </div>
-          <CTABtn className="CTABtn--dark" onClick={() => history.push('/providers/2')} style={{ color: 'white', display: 'block', width: '200px' }}>
-            <FontAwesomeIcon icon="user" color="#ffffff" style={{ marginRight: '10px' }}/>
+          <CTABtn className="CTABtn--dark" onClick={() => history.push('/providers/2')} style={{ display: 'block', width: '200px' }}>
+            <FontAwesomeIcon icon="user" color="#fff" style={{ marginRight: '10px' }}/>
         View Profile
           </CTABtn>
-          <CTABtn className="CTABtn--dark" style={{ width: '200px', color: 'white', display: 'block'  }}>
-            <FontAwesomeIcon icon="envelope" color="#ffffff" style={{ marginRight: '10px' }}/>
+          <CTABtn className="CTABtn--outline" style={{  width: '200px', display: 'block'  }}>
+            <FontAwesomeIcon icon="envelope" style={{ marginRight: '10px' }}/>
         Message
           </CTABtn> 
         </div>
