@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import '../styles/ProviderCard.css';
 import { getPng, getSvg } from 'lib/assetsUtils';
 import CTABtn from 'components/CTABtn';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class ProviderCard extends React.Component {
   render() {
@@ -15,13 +16,16 @@ class ProviderCard extends React.Component {
         </div>
         <div class="ProviderCard__middle">
           <div className="ProviderCard__name"> {name} </div>
-          <div style={{ display:'inline' }} style={{ textAlign: 'left', fontWeight: '500' }}>Zip Code: {zipCode}</div>
+          <div style={{ padding: '5px 10px', display: 'inline-block', background: '#eee', textAlign: 'left', fontWeight: '400', width: '160px'  }}>
+            <FontAwesomeIcon icon="map-marker-alt" style={{ marginRight: '10px' }}/>
+           Zip Code: {zipCode}
+          </div>
           <CTABtn className="CTABtn--dark" onClick={() => history.push('/providers/2')} style={{ color: 'white', display: 'block', width: '200px' }}>
-            <img style={{ height: '15px', marginRight: '5px' }}src={getSvg('patients')}></img>
+            <FontAwesomeIcon icon="user" color="#ffffff" style={{ marginRight: '10px' }}/>
         View Profile
           </CTABtn>
           <CTABtn className="CTABtn--dark" style={{ width: '200px', color: 'white', display: 'block'  }}>
-            <img style={{ height: '15px', marginRight: '5px' }}src={getSvg('mail')}></img>
+            <FontAwesomeIcon icon="envelope" color="#ffffff" style={{ marginRight: '10px' }}/>
         Message
           </CTABtn> 
         </div>

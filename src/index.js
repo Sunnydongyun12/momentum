@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Root from './routes';
 import * as serviceWorker from './serviceWorker';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faMapMarkerAlt, faEnvelope, faUser } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faMapMarkerAlt, faEnvelope, faUser);
 
 ReactDOM.render(<Root />, document.getElementById('root'));
 
