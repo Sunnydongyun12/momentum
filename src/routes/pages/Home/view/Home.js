@@ -16,7 +16,7 @@ export const Home = () => {
       <p style={{ fontSize: '1.3em', fontWeight: 300 }}>3. Find a solution provider.</p>
       <p style={{ fontSize: '1.3em', fontWeight: 300 }}>4. Book.</p>
       <p style={{ fontSize: '1.3em', fontWeight: 300 }}>5. Done!</p>
-      <ProviderCard description={description} imgName="test" zipCode="55555"/>
+      <ProviderCard name="test" description={description} imgName="test" zipCode="55555"/>
     </div>
   );
 };
