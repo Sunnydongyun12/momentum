@@ -11,7 +11,7 @@
 UPDATE
 * we are used styled components now, more info [here](https://www.styled-components.com/)
 * some components / routes still have SCSS, those will be updated later if we have time
-* moving forward, used styled components and put them in the same file as the view
+* moving forward, use styled components and put them in the same file as the view
 
 ## React
 https://reactjs.org/docs/hello-world.html
