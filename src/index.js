@@ -4,9 +4,9 @@ import './index.css';
 import Root from './routes';
 import * as serviceWorker from './serviceWorker';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faMapMarkerAlt, faEnvelope, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkerAlt, faEnvelope, faUser, faTag } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faMapMarkerAlt, faEnvelope, faUser);
+library.add(faMapMarkerAlt, faEnvelope, faUser, faTag);
 
 ReactDOM.render(<Root />, document.getElementById('root'));
 

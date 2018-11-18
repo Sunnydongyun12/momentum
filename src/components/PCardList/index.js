@@ -1,3 +1,3 @@
-import PCardList from "./view/PCardList";
+import PCardList from './PCardList';
 
 export default PCardList;

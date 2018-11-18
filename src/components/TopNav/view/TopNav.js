@@ -23,7 +23,7 @@ class TopNav extends React.Component {
           <span className="TopNav__hamburger__row" />
           <span className="TopNav__hamburger__row" />
         </div>
-        <span className="TopNav__project-name">Momentum</span>
+        <span className="TopNav__project-name">Momentum <span role="img" aria-label="box">📦</span></span>
       </div>
     );
   }

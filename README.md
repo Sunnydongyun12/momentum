@@ -7,6 +7,12 @@
 * styles for each component should be in their own self-contained styles folder, `Component/styles/Component.scss`
 * constants like colors and heights that need to be known elsewhere should be in `src/styles/constants.scss`
 
+
+UPDATE
+* we are used styled components now, more info [here](https://www.styled-components.com/)
+* some components / routes still have SCSS, those will be updated later if we have time
+* moving forward, used styled components and put them in the same file as the view
+
 ## React
 https://reactjs.org/docs/hello-world.html
 * components live in `src/Components`, create yours in there and follow the examples of the ones already in there 

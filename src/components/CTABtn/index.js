@@ -1,3 +1,3 @@
-import CTABtn from './view/CTABtn';
+import CTABtn from './CTABtn';
 
 export default CTABtn;
