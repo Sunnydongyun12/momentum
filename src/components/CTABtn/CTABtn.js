@@ -32,6 +32,14 @@ const themes = {
     hoverBgColor: 'transparent',
     hoverBorder: '2px solid #007A87',
   },
+  outlineWhiteBlue: {
+    border: '2px solid white',
+    color: 'white',
+    backgroundColor: 'transparent',
+    hoverColor: '#007A87',
+    hoverBgColor: 'transparent',
+    hoverBorder: '2px solid #007A87',
+  },
   pink: {
     border: '1px solid transparent',
     color: 'white',

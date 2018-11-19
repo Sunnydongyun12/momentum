@@ -14,7 +14,7 @@ const Heading = styled.div`
 
 const StyledLabel = styled.label`
   text-transform: uppercase;
-  font-size: 1rem;
+  font-size: 0.85rem;
   margin-right: 10px;
   /* font-weight: 300; */
 `;
