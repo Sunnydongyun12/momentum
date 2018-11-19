@@ -1,10 +1,8 @@
 @import 'src/styles/constants.scss';
 
 .TopNav {
-  position: sticky;
   display: grid;
   grid-template-columns: auto 1fr;
-  top: 0;
   background-color: #242729;
   width: 100%;
   height: $topNav-height;

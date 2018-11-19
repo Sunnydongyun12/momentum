@@ -80,6 +80,12 @@ const Dropdown = styled.div`
   box-sizing: border-box;
 `;
 
+const Container = styled.div`
+  position: sticky;
+  top: 0; 
+  z-index: 1;
+`;
+
 class TopNav extends React.Component {
   constructor(props){
     super(props);
@@ -96,7 +102,7 @@ class TopNav extends React.Component {
     const { showSideNav } = this.props;
 
     return (
-      <div style={{ position: 'sticky', top: '0', zIndex: '1' }}>
+      <Container>
         <div className="TopNav">
           <Title to="/home">
             <span role="img" aria-label="box" style={{ marginRight: '5px' }}>📦</span>
@@ -119,12 +125,13 @@ class TopNav extends React.Component {
             <AccountButton onClick={this.handleAccountClick}>
               <FontAwesomeIcon style={{ marginRight: '5px' }} icon="user"/>
           Username
+              <FontAwesomeIcon style={{ marginLeft: '5px' }} icon="caret-down"/>
             </AccountButton>
             {/*<CTABtn theme="outlineWhiteBlue">Sign In</CTABtn>*/}
           </Right>
         </div>
         {this.state.acctDropdownShown && <Dropdown><div style={{ background: '#242729' }}><StyledLink to="/preferences" activeClassName={'f'}>Settings</StyledLink></div></Dropdown>}
-      </div>
+      </Container>
     );
   }
 }
