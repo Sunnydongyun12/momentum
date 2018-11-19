@@ -19,10 +19,24 @@ const themes = {
   outline: {
     border: '2px solid black',
     color: 'black',
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
     hoverColor: '#B04235',
-    hoverBgColor: 'white',
+    hoverBgColor: 'transparent',
     hoverBorder: '2px solid #B04235',
+  },
+  outlineBlue: {
+    border: '2px solid black',
+    color: 'black',
+    backgroundColor: 'transparent',
+    hoverColor: '#007A87',
+    hoverBgColor: 'transparent',
+    hoverBorder: '2px solid #007A87',
+  },
+  pink: {
+    border: '1px solid transparent',
+    color: 'white',
+    backgroundColor: '#FC5C63',
+    hoverBgColor: '#DF3C47',
   },
 };
 
@@ -39,6 +53,7 @@ const StyledButton = styled.button`
   line-height: 1.5;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  box-sizing: border-box;
   
   &:disabled {
     opacity: 0.65;

@@ -18,13 +18,13 @@ const StyledTag = styled.button`
   
   cursor: pointer;
   
-  border: ${props => props.active ?  '2px solid #B04235' : '2px solid #23272b'};
+  border: ${props => props.active ?  '2px solid #007A87' : '2px solid #23272b'};
   color: ${props => props.active ? '#fff' : '#000'};
-  background-color: ${props => props.active ? '#B04235' : '#fff'};
+  background-color: ${props => props.active ? '#007A87' : '#fff'};
 
   &:hover {
-    border: ${props => props.active ? '' : '2px solid #B04235'};
-    color: ${props => props.active ? '' : '#B04235'};
+    border: ${props => props.active ? '' : '2px solid #007A87'};
+    color: ${props => props.active ? '' : '#007A87'};
   }
 `;
 

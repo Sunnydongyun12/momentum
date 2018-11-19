@@ -1,3 +1,3 @@
-import Preferences from './view/Preferences';
+import Preferences from './Preferences';
 
 export default Preferences;

@@ -6,7 +6,7 @@
   font-weight: 300;
 
   &:hover, &:focus {
-    background-color: rgb(136, 49, 41);
+    background-color: $kazan-hover;
     transition: background-color 200ms, border 200ms;
 
     // text when Link is being hovered over
@@ -16,10 +16,10 @@
   }
 
   &--active {
-    background-color: rgb(236, 105, 93);
+    background-color: $kazan;
 
     &:hover, &:focus {
-      background-color: rgb(236, 105, 93);
+      background-color: $kazan;
     }
 
     // text when Link is active

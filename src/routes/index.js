@@ -7,6 +7,7 @@ import SideNav from 'components/SideNav';
 import TopNav from 'components/TopNav';
 import Home from 'routes/pages/Home';
 import Preferences from 'routes/pages/Preferences';
+import SignUp from 'routes/pages/SignUp';
 import SolutionList from 'routes/pages/SolutionList';
 import ProviderProfile from 'routes/pages/ProviderProfile';
 import { Switch } from 'react-router';
@@ -25,6 +26,7 @@ class Root extends React.Component {
               <Route exact path="/providers/:providerId" render={ProviderProfile} />
               <Route exact path="/providers" render={SolutionList} />
               <Route exact path="/preferences" render={Preferences} />
+              <Route exact path="/signup" render={SignUp} />
               <Route exact path="/Book" render={Book} />
               <Route component={Home} />
             </Switch>

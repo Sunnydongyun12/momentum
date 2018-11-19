@@ -1,7 +1,6 @@
 import React from 'react';
 import CTABtn from 'components/CTABtn';
 import '../styles/Home.css';
-import PCardList from 'components/PCardList';
 
 export const Home = () => {
   return (

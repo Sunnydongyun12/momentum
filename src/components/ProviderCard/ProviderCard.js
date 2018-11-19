@@ -82,7 +82,6 @@ const ProfilePic = styled.img`
 `;
 
 const ActionBtn = styled(CTABtn)`
-  display: block;
   width: 200px;
 `;
 
@@ -102,14 +101,14 @@ const ProviderCard = ({ description, zipCode, imgName, name, history }) => {
            Zip Code: {zipCode}
         </ZipCode>
 
-        <ActionBtn theme="dark" onClick={() => history.push('/providers/2')}>
+        <ActionBtn theme="pink" onClick={() => history.push('/providers/2')}>
           <TextIcon icon="user" color="#fff"/>
-        View Profile
+          <span>View Profile</span>
         </ActionBtn>
 
-        <ActionBtn theme="outline">
-          <TextIcon icon="envelope"/>
-        Message
+        <ActionBtn theme="outlineBlue">
+          <TextIcon style={{ marginLeft: '-20px' }} icon="envelope"/>
+          <span>Message</span>
         </ActionBtn> 
 
       </Middle>

@@ -4,14 +4,14 @@ import styled from 'styled-components';
 
 const cards = [
   {
-    name: 'Perfect storage for summer',
+    name: 'First Last',
     image: 'http://picsum.photos/200',
     imgName: 'test',
     description: '10 * 10 ft storage place during summer 2018',
     zipCode: '55555',
   },
   {
-    name: 'Westwood...',
+    name: 'First Last',
     image: 'http://picsum.photos/201',
     imgName: 'test',
     description: '5 * 5 ft storage place during summer 2018',
@@ -25,14 +25,14 @@ const cards = [
     zipCode: '55555',
   },
   {
-    name: 'Perfect storage for summer',
+    name: 'First Last',
     image: 'http://picsum.photos/223',
     imgName: 'test',
     description: '10 * 10 ft storage place during summer 2018',
     zipCode: '55555',
   },
   {
-    name: 'Westwood...',
+    name: 'First Last',
     image: 'http://picsum.photos/256',
     imgName: 'test',
     description: '5 * 5 ft storage place during summer 2018',
@@ -53,7 +53,6 @@ const List = styled.div`
   grid-template-rows: 1fr 1fr;
   justify-items: center;
   align-items: center;
-  grid-column-gap: 20px;
   grid-row-gap: 2em;
 `;
 

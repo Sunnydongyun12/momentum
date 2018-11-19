@@ -1,3 +1,3 @@
-import SolutionList from './view/SolutionList';
+import SolutionList from './SolutionList';
 
 export default SolutionList;
