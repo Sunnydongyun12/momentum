@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import CTABtn from 'components/CTABtn';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { topNavHeight } from 'lib/stylesConstants';
 
 
 const Title = styled(NavLink)`
@@ -77,6 +78,8 @@ const Dropdown = styled.div`
   border-top: 2px solid #eee;
   padding: 15px;
   box-sizing: border-box;
+  position: sticky;
+  z-index: 51;
 `;
 
 const Container = styled.div`
@@ -90,8 +93,19 @@ const StyledNav = styled.div`
   grid-template-columns: auto 1fr;
   background-color: #242729;
   width: 100%;
-  height: 50px; /* topnav height*/
+  position: sticky;
+  height: ${topNavHeight};
+  z-index: 100;
+`;
+
+const Backdrop = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 1;
+  cursor: pointer;
 `;
 
 class TopNav extends React.Component {
@@ -106,33 +120,41 @@ class TopNav extends React.Component {
     this.setState({ acctDropdownShown: !this.state.acctDropdownShown });
   }
 
+  closeDropdown = () => {
+    this.setState({ acctDropdownShown: false });
+  }
+
   render() {
 
     return (
       <Container>
         <StyledNav>
-          <Title to="/home">
+          <Title  onClick={this.closeDropdown} to="/home">
             <span role="img" aria-label="box" style={{ marginRight: '5px' }}>📦</span>
         Momentum
           </Title>
 
           <Right>
-            <StyledLink to="/providers" activeClassName={activeClassName}>Providers</StyledLink>
-            <AccountButton onClick={this.handleAccountClick}>
-              <FontAwesomeIcon style={{ marginRight: '5px' }} icon="user"/>
-          Username
-              <FontAwesomeIcon style={{ marginLeft: '5px' }} icon="caret-down"/>
-            </AccountButton>
-            {/*<CTABtn theme="outlineWhiteBlue">Sign In</CTABtn>*/}
+            {this.props.loggedIn && <StyledLink  onClick={this.closeDropdown} to="/providers" activeClassName={activeClassName}>Providers</StyledLink> }
+            { this.props.loggedIn && (
+              <AccountButton onClick={this.handleAccountClick}>
+                <FontAwesomeIcon style={{ marginRight: '5px' }} icon="user"/>
+                Username
+                <FontAwesomeIcon style={{ marginLeft: '5px' }} icon="caret-down"/>
+              </AccountButton>
+            )}
+            {!this.props.loggedIn && <CTABtn theme="outlineWhiteBlue">Sign In</CTABtn>}
           </Right>
         </StyledNav>
-        {this.state.acctDropdownShown && <Dropdown><div style={{ background: '#242729' }}><StyledLink to="/preferences" activeClassName={'f'}>Settings</StyledLink></div></Dropdown>}
+        {this.state.acctDropdownShown && <Dropdown onClick={this.handleAccountClick}><div style={{ background: '#242729' }}><StyledLink to="/preferences" activeClassName={'f'}>Settings</StyledLink></div></Dropdown>}
+        {this.state.acctDropdownShown && <Backdrop onClick={this.handleAccountClick}/>}
       </Container>
     );
   }
 }
 
 TopNav.propTypes = {
+  loggedIn: PropTypes.bool,
 };
 
 export default TopNav;

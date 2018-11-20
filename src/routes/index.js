@@ -7,10 +7,11 @@ import TopNav from 'components/TopNav';
 import Home from 'routes/pages/Home';
 import Preferences from 'routes/pages/Preferences';
 import SignUp from 'routes/pages/SignUp';
-import SolutionList from 'routes/pages/SolutionList';
+import ProviderList from 'routes/pages/ProviderList';
 import ProviderProfile from 'routes/pages/ProviderProfile';
 import { Switch } from 'react-router';
 import Book from './pages/Book';
+import { ProtectedRoute } from './ProtectedRoute';
 
 class Root extends React.Component {
   render() {
@@ -22,7 +23,7 @@ class Root extends React.Component {
             <Switch>
               <Route exact path="/home" render={Home} />
               <Route exact path="/providers/:providerId" render={ProviderProfile} />
-              <Route exact path="/providers" render={SolutionList} />
+              <ProtectedRoute exact path="/providers" render={ProviderList} />
               <Route exact path="/preferences" render={Preferences} />
               <Route exact path="/signup" render={SignUp} />
               <Route exact path="/book" render={Book} />

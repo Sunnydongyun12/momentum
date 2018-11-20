@@ -1,10 +1,9 @@
 # Momentum
+https://mattkhan.github.io/momentum
 
 # Code Practices
 ## CSS
 * we are using styled components now, more info [here](https://www.styled-components.com/)
-* some components / routes still have SCSS, those will be updated later if we have time
-* moving forward, use styled components and put them in the same file as the view
 
 ## React
 https://reactjs.org/docs/hello-world.html

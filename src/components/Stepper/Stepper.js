@@ -48,7 +48,7 @@ const Step = styled.div`
 `;
 
 const Container = styled.div`
-  margin-top: 20px;
+  margin-top: 2em;
   display: flex;
   flex-direction: row;
   align-content: space-around;

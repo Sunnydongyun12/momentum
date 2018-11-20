@@ -2,6 +2,7 @@ import React from 'react';
 import PCardList from 'components/PCardList';
 import TagList from 'components/TagList';
 import styled from 'styled-components';
+import { eggshell } from 'lib/stylesConstants';
 
 const Content = styled.div`
   margin-top: 2em;
@@ -20,7 +21,7 @@ const FilterSidebar = styled.div`
 `;
 
 const ListView = styled.div`
-  background: $eggshell;
+  background: ${eggshell};
   margin-bottom: 200px;
 `;
 

@@ -11,7 +11,7 @@ const Content = styled.div`
 `;
 
 const Heading = styled.div`
-  margin-top: 1em;
+  margin: 2em 0 0 0;
   font-weight: 700;
   font-size: 2em;
 `;

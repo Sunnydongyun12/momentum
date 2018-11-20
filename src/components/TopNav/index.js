@@ -3,6 +3,7 @@ import TopNav from './TopNav';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => ({
+  loggedIn: state.loggedIn,
 });
 
 const mapDispatchToProps = dispatch => ({

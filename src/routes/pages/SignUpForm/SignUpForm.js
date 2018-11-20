@@ -5,13 +5,6 @@ import * as yup from 'yup';
 import CTABtn from 'components/CTABtn';
 import styled from 'styled-components';
 
-
-const Heading = styled.div`
-  margin: 1em 0;
-  font-size: 1.2em;
-  font-weight: 500;
-`;
-
 const StyledLabel = styled.label`
   text-transform: uppercase;
   font-size: 0.85rem;
@@ -25,7 +18,7 @@ const TextInput = styled(Field)`
   border: 2px rgb(177, 177, 177) solid;
   border-radius: 0;
   padding: 0.2em;
-  margin-bottom: 5px;
+  margin-bottom: 1em;
   max-width: 80%;
   height: 40px;
   cursor: text;
@@ -53,6 +46,17 @@ const SignUpForm = ({ values, errors, touched, isSubmitting }) => (
         type="email"
         name="email"
         style={{ width: '300px' }}
+        placeholder="you@example.com"
+      />
+    </div>
+
+    <div>
+      <div><StyledLabel for="username">Username</StyledLabel></div>
+      <TextInput
+        type="text"
+        name="username"
+        style={{ width: '300px' }}
+        placeholder="Create a username"
       />
     </div>
 
@@ -62,6 +66,7 @@ const SignUpForm = ({ values, errors, touched, isSubmitting }) => (
         type="password"
         name="password"
         style={{ width: '300px' }}
+        placeholder="Create a password"
       />
     </div>
 

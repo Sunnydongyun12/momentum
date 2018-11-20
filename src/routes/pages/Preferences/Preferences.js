@@ -17,7 +17,7 @@ const Heading = styled.div`
 `;
 
 const Subheading = styled.div`
-  margin-top: 20px;
+  margin: 2em 0 1em 0;
   font-size: 1.5em;
   /* color: #555; */
   font-weight: 600;

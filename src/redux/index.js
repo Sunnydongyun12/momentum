@@ -1,16 +1,16 @@
-import {
-  combineReducers, createStore, compose, applyMiddleware,
-} from 'redux';
+import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
 // importing reducers
 import query from './query/reducer';
+import loggedIn from './loggedIn/reducer';
 
 const initialState = {
-  sideNavShown: false,
   query: '',
+  loggedIn: true,
 };
 // combined reducer
 const reducer = combineReducers({
   query,
+  loggedIn,
 });
 
 const thunk = store => next => (action) => {
