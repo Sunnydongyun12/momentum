@@ -1,3 +1,3 @@
-import ProviderProfile from './view/ProviderProfile';
+import ProviderProfile from './ProviderProfile';
 
 export default ProviderProfile;

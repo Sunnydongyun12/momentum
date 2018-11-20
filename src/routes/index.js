@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 // import './index.css';
 import store from '../redux';
 import { BrowserRouter, Route } from 'react-router-dom';
-import SideNav from 'components/SideNav';
 import TopNav from 'components/TopNav';
 import Home from 'routes/pages/Home';
 import Preferences from 'routes/pages/Preferences';
@@ -20,14 +19,13 @@ class Root extends React.Component {
         <BrowserRouter>
           <div className="Page">
             <TopNav />
-            <SideNav />
             <Switch>
               <Route exact path="/home" render={Home} />
               <Route exact path="/providers/:providerId" render={ProviderProfile} />
               <Route exact path="/providers" render={SolutionList} />
               <Route exact path="/preferences" render={Preferences} />
               <Route exact path="/signup" render={SignUp} />
-              <Route exact path="/Book" render={Book} />
+              <Route exact path="/book" render={Book} />
               <Route component={Home} />
             </Switch>
           </div>

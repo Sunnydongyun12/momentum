@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../styles/TopNav.css';
 import { enterKeyHandler, preventFocus } from 'lib/accessibilityUtils';
 import styled from 'styled-components';
 import CTABtn from 'components/CTABtn';
@@ -86,6 +85,15 @@ const Container = styled.div`
   z-index: 1;
 `;
 
+const StyledNav = styled.div`
+  display: grid;
+  grid-template-columns: auto 1fr;
+  background-color: #242729;
+  width: 100%;
+  height: 50px; /* topnav height*/
+  z-index: 1;
+`;
+
 class TopNav extends React.Component {
   constructor(props){
     super(props);
@@ -99,28 +107,16 @@ class TopNav extends React.Component {
   }
 
   render() {
-    const { showSideNav } = this.props;
 
     return (
       <Container>
-        <div className="TopNav">
+        <StyledNav>
           <Title to="/home">
             <span role="img" aria-label="box" style={{ marginRight: '5px' }}>📦</span>
         Momentum
           </Title>
 
           <Right>
-            <div
-              className="TopNav__hamburger"
-              onClick={showSideNav}
-              onKeyDown={enterKeyHandler(showSideNav)}
-              onMouseDown={preventFocus}
-              role="button"
-              aria-label="Show side navigation"
-              aria-controls="navigation"
-              tabIndex="0"
-            >
-            </div>
             <StyledLink to="/providers" activeClassName={activeClassName}>Providers</StyledLink>
             <AccountButton onClick={this.handleAccountClick}>
               <FontAwesomeIcon style={{ marginRight: '5px' }} icon="user"/>
@@ -129,7 +125,7 @@ class TopNav extends React.Component {
             </AccountButton>
             {/*<CTABtn theme="outlineWhiteBlue">Sign In</CTABtn>*/}
           </Right>
-        </div>
+        </StyledNav>
         {this.state.acctDropdownShown && <Dropdown><div style={{ background: '#242729' }}><StyledLink to="/preferences" activeClassName={'f'}>Settings</StyledLink></div></Dropdown>}
       </Container>
     );
@@ -137,7 +133,6 @@ class TopNav extends React.Component {
 }
 
 TopNav.propTypes = {
-  showSideNav: PropTypes.func,
 };
 
 export default TopNav;

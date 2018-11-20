@@ -2,7 +2,6 @@ import {
   combineReducers, createStore, compose, applyMiddleware,
 } from 'redux';
 // importing reducers
-import sideNavShown from './SideNavShown/reducer';
 import query from './query/reducer';
 
 const initialState = {
@@ -11,7 +10,6 @@ const initialState = {
 };
 // combined reducer
 const reducer = combineReducers({
-  sideNavShown,
   query,
 });
 

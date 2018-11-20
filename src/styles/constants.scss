@@ -9,42 +9,5 @@ $topNav-height: 50px;
 $kazan: #007A87;
 $kazan-hover: rgba(35, 129, 139, 0.699);
 
-// SideNav constants
-$sideNavBg-color: #DC3E4B;
-$sideNavSpBg-color: #DC3E4B;
-$sideNav-width: 190px;
-$sideNavRow-height: 50px;
-
 // TopNav constants
 $topNav-height: 50px;
-
-// SideNav constants
-$sideNav-width: 190px;
-$sideNavRow-height: 50px;
-$navRowIcon-width: 50px;
-
-// Search
-$searchBar-height: 50px;
-
-// Table
-$tableRow-height: 60px;
-$table-border-color: #a4a4a4;
-
-@mixin navRow() {
-  display: grid;
-  grid-template-columns: $navRowIcon-width 1fr;
-  align-items: center;
-  grid-column-gap: 10px;
-  text-decoration: none;
-  width: 100%; // chrome doesn't need, firefox needs
-  height: 100%;
-}
-
-@mixin navRowIcon($sideLength) {
-  user-select: none;
-  grid-column: 1 / 2;
-  height: $sideLength;
-  width: $sideLength;
-  justify-self: center;
-  align-self: center;
-}

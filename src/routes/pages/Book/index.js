@@ -1,3 +1,3 @@
-import Book from './view/Book';
+import Book from './Book';
 
 export default Book;
