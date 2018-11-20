@@ -2,21 +2,14 @@
 
 # Code Practices
 ## CSS
-* use SASS/SCSS, the scss flavor, guide [here](https://sass-lang.com/guide)
-* use BEM for CSS classes, more info [here](http://getbem.com/)
-* styles for each component should be in their own self-contained styles folder, `Component/styles/Component.scss`
-* constants like colors and heights that need to be known elsewhere should be in `src/styles/constants.scss`
-
-
-UPDATE
-* we are used styled components now, more info [here](https://www.styled-components.com/)
+* we are using styled components now, more info [here](https://www.styled-components.com/)
 * some components / routes still have SCSS, those will be updated later if we have time
 * moving forward, use styled components and put them in the same file as the view
 
 ## React
 https://reactjs.org/docs/hello-world.html
 * components live in `src/Components`, create yours in there and follow the examples of the ones already in there 
-* components should have their presentational portions in `Component/view/Component.js`
+* components should have their presentational portions in `Component/Component.js`, including their styled components code
   * `Component/index.js` will act as the container component, more info [here](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
 * import components by using `import ComponentName from 'components/ComponentName';` because `index.js` will automatically be resolved as the imported file
 
