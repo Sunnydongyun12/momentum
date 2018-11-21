@@ -5,7 +5,7 @@ import loggedIn from './loggedIn/reducer';
 
 const initialState = {
   query: '',
-  loggedIn: true,
+  loggedIn: false,
 };
 // combined reducer
 const reducer = combineReducers({

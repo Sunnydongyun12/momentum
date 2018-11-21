@@ -13,7 +13,6 @@ const ActiveStep = styled.div`
   text-align: center;
   margin-right: 10px;
   border: 2px solid #F95E66;
-  font-weight: 300;
   border-radius: 1em 1em;
   font-size: 0.9rem;
 `;
@@ -28,7 +27,6 @@ const FinishedStep = styled.div`
   text-align: center;
   margin-right: 10px;
   border: 2px solid #F95E66;
-  font-weight: 300;
   border-radius: 1em 1em;
   font-size: 0.9rem;
 `;
@@ -42,7 +40,6 @@ const Step = styled.div`
   text-align: center;
   margin-right: 10px;
   box-sizing: border-box;
-  font-weight: 300;
   border-radius: 1em 1em;
   font-size: 0.9rem;
 `;

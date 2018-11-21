@@ -78,7 +78,7 @@ const Dropdown = styled.div`
   border-top: 2px solid #eee;
   padding: 15px;
   box-sizing: border-box;
-  position: sticky;
+  position: absolute;
   z-index: 51;
 `;
 

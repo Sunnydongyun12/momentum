@@ -1,12 +1,18 @@
 import React from 'react';
 import CTABtn from 'components/CTABtn';
 import styled from 'styled-components';
-import Stepper from 'components/Stepper/Stepper';
+import { getSvg } from 'lib/assetsUtils';
+import { Link } from 'react-router-dom';
+
 
 const Content = styled.div`
   box-sizing: border-box;
   padding-left: 40px;
   padding-right: 40px;
+  background: url(${getSvg('bg')})  no-repeat center center fixed;
+  background-size: cover;
+  min-height: calc(100vh - 50px);
+  color: white;
 `;
 
 const ButtonGrid = styled.div`
@@ -24,18 +30,17 @@ export const Home = () => {
   
   return (
     <Content>
-      <Stepper currentStep={0} steps={['Account Information', 'Storage Information', 'Finish']} />
-      <h1>Home</h1>
-      <h2 style={{ fontWeight: 400 }}>Your cheap and easy storage solution provider. Follow these simple steps to get you up and running.</h2>
-      <Direction>1. Click on the sidebar.</Direction>
-      <Direction>2. Set your preferences.</Direction>
-      <Direction>3. Find a solution provider.</Direction>
-      <Direction>4. Book.</Direction>
-      <Direction>5. Done!</Direction>
+      <div style={{ margin: '0', paddingTop: '2em', fontWeight: '600', fontSize: '4em' }}>Momentum</div>
+      <div style={{ color: 'white', fontSize: '1.7em', marginBottom: '2em' }}>Find storage providers near you.</div>
+      <div style={{ width: '400px', padding: '20px', borderRadius: '0.5rem', backgroundColor: '#242729', fontSize: '1.2em', lineHieght: '1.2em', marginBottom: '1em' }}>
+        Ever wanted to store something locally, but all those solutions were too expensive? Momentum will match you with
+        storage providers in your area and give you a cheap and convenient storage solution.
+      </div>
 
       <ButtonGrid>
-        <CTABtn theme="outlineBlue">Sign In</CTABtn>
-        <CTABtn theme="pink">Sign Up</CTABtn>
+        <Link to="/signup" >
+          <CTABtn style={{ width: '430px' }} theme="pink">Sign Up</CTABtn>
+        </Link>
       </ButtonGrid>
     </Content>
   );
