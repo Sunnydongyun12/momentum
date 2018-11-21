@@ -4,6 +4,7 @@ import { withFormik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import CTABtn from 'components/CTABtn';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const StyledLabel = styled.label`
   text-transform: uppercase;
@@ -32,7 +33,7 @@ const TextInput = styled(Field)`
 
 const NextBtn = styled(CTABtn)`
   display: block;
-  margin-top: 20px;
+  margin-top: 2em;
   height: 50px;
   width: 100%;
   font-size: 1.3em;
@@ -69,10 +70,11 @@ const SignUpForm = ({ values, errors, touched, isSubmitting }) => (
         placeholder="Create a password"
       />
     </div>
-
-    <NextBtn theme="pink" type="submit">
+    <Link to ="/preferences">
+      <NextBtn theme="pink" type="submit">
       Next
-    </NextBtn>
+      </NextBtn>
+    </Link>
   </Form>
 );
 

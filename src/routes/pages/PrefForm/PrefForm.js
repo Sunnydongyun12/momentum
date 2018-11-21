@@ -71,10 +71,10 @@ const TextInput = styled(Field)`
 `;
 
 const NextBtn = styled(CTABtn)`
-  display: block;
-  margin-top: 20px;
+  margin-top: 2em;
   height: 50px;
-  width: 100%;
+  width: 45%;
+  margin-right: 1em;
   font-size: 1.3em;
 `;
 
@@ -146,9 +146,11 @@ const PrefForm = ({ values, errors, touched, isSubmitting }) => (
       </DateField>
 
     </DateContainer>
-
     <NextBtn theme="pink" type="submit">
       Next
+    </NextBtn>
+    <NextBtn theme="outlineBlue" type="submit">
+      Previous
     </NextBtn>
   </Form>
 );
