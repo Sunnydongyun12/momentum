@@ -1,5 +1,5 @@
 import React from 'react';
-import SignUpForm from '../SignUpForm/SignUpForm';
+import SignUpForm from '../SignUpForm';
 import Stepper from 'components/Stepper/Stepper';
 import styled from 'styled-components';
 
@@ -16,13 +16,6 @@ const Heading = styled.div`
   font-size: 2em;
 `;
 
-const Subheading = styled.div`
-  margin-top: 20px;
-  font-size: 1.5em;
-  /* color: #555; */
-  font-weight: 600;
-`;
-
 const SignUp = () => {
   return (
     <Content>
@@ -31,7 +24,6 @@ const SignUp = () => {
       <SignUpForm />
     </Content>
   );
-
 };
 
 export default SignUp;

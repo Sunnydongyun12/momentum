@@ -21,11 +21,6 @@ const ButtonGrid = styled.div`
   grid-column-gap: 2em;
 `;
 
-const Direction = styled.p`
-  font-size: 1.3em;
-  font-weight: 300;
-`;
-
 export const Home = () => {
   
   return (

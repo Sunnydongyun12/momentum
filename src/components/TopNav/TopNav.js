@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { enterKeyHandler, preventFocus } from 'lib/accessibilityUtils';
 import styled from 'styled-components';
 import CTABtn from 'components/CTABtn';
 import { NavLink } from 'react-router-dom';

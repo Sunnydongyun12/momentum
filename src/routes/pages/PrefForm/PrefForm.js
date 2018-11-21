@@ -4,6 +4,7 @@ import { withFormik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import CTABtn from 'components/CTABtn';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 
 const Heading = styled.div`
@@ -83,7 +84,7 @@ const PrefForm = ({ values, errors, touched, isSubmitting }) => (
 
     <Heading>Where do you want to leave your stuff?</Heading>
     <div>
-      <div><StyledLabel for="zipCode">Zip Code</StyledLabel></div>
+      <div><StyledLabel htmlFor="zipCode">Zip Code</StyledLabel></div>
       <TextInput
         type="text"
         name="zipCode"
@@ -96,7 +97,7 @@ const PrefForm = ({ values, errors, touched, isSubmitting }) => (
     <SpaceContainer>
 
       <div>
-        <div><StyledLabel for="length">Length</StyledLabel></div>
+        <div><StyledLabel htmlFor="length">Length</StyledLabel></div>
         <TextInput
           type="number"
           name="length"
@@ -105,7 +106,7 @@ const PrefForm = ({ values, errors, touched, isSubmitting }) => (
       </div>
 
       <div>
-        <div><StyledLabel for="length">Width</StyledLabel></div>
+        <div><StyledLabel htmlFor="width">Width</StyledLabel></div>
         <TextInput
           type="number"
           name="width"
@@ -114,7 +115,7 @@ const PrefForm = ({ values, errors, touched, isSubmitting }) => (
       </div>
 
       <div>
-        <div><StyledLabel for="length">Height</StyledLabel></div>
+        <div><StyledLabel htmlFor="height">Height</StyledLabel></div>
         <TextInput
           type="number"
           name="height"
@@ -128,19 +129,19 @@ const PrefForm = ({ values, errors, touched, isSubmitting }) => (
     <DateContainer>
 
       <DateField>
-        <div><StyledLabel for="from">Start Date</StyledLabel></div>
+        <div><StyledLabel htmlFor="startDate">Start Date</StyledLabel></div>
         <DateInput
           type="date"
-          name="from"
+          name="startDate"
           placeholder="mm/dd/yyyy"
         />
       </DateField>
 
-      <DateField style={{ marginLeft: '-1px' }}>
-        <div><StyledLabel for="to" >End Date</StyledLabel></div>
+      <DateField>
+        <div><StyledLabel htmlFor="endDate" >End Date</StyledLabel></div>
         <DateInput
           type="date"
-          name="to"
+          name="endDate"
           placeholder="mm/dd/yyyy"
         />
       </DateField>
@@ -149,9 +150,12 @@ const PrefForm = ({ values, errors, touched, isSubmitting }) => (
     <NextBtn theme="pink" type="submit">
       Next
     </NextBtn>
-    <NextBtn theme="outlineBlue" type="submit">
+    
+    <Link to="/signup">
+      <NextBtn theme="outlineBlue">
       Previous
-    </NextBtn>
+      </NextBtn>
+    </Link>
   </Form>
 );
 
@@ -160,25 +164,37 @@ PrefForm.propTypes = {
   errors: PropTypes.object,
   touched: PropTypes.object,
   isSubmitting: PropTypes.bool,
-  goBack: PropTypes.func,
 };
 
 const formikForm = withFormik({
-  mapPropsToValues({ zipCode }) {
-    return {
-      zipCode: zipCode || '',
-    };
+  mapPropsToValues({ user }) {
+    let prefs = {};
+    if (user)
+      prefs = user.preferences;
+
+    if (prefs) {
+      return prefs;
+    } else {
+      return {
+        zipCode: '',
+        length:'',
+        width: '',
+        height: '',
+        startDate: '',
+        endDate: '',
+      };
+    }
+
   },
   validationSchema: yup.object().shape({
   }),
   handleSubmit(values, {
-    setErrors, resetForm, setSubmitting, props: { goBack },
+    setErrors, resetForm, setSubmitting, props: { history, updatePreferences },
   }) {
-    setTimeout(() => {
-      setSubmitting(false);
-      resetForm();
-      goBack && goBack();
-    }, 1000);
+    setSubmitting(false);
+    resetForm();
+    updatePreferences(values);
+    history.push('/signup');
   },
 })(PrefForm);
 

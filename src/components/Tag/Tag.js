@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { preventFocus } from 'lib/accessibilityUtils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { blue } from 'lib/stylesConstants';
 
 const StyledTag = styled.button`
   display: block;
@@ -18,13 +19,13 @@ const StyledTag = styled.button`
   
   cursor: pointer;
   
-  border: ${props => props.active ?  '2px solid #007A87' : '2px solid #23272b'};
+  border: 2px solid ${props => props.active ?  blue : '#23272b'};
   color: ${props => props.active ? '#fff' : '#000'};
-  background-color: ${props => props.active ? '#007A87' : '#fff'};
+  background-color: ${props => props.active ? blue : '#fff'};
 
   &:hover {
-    border: ${props => props.active ? '' : '2px solid #007A87'};
-    color: ${props => props.active ? '' : '#007A87'};
+    border: 2px solid ${props => props.active ? 'transparent' : blue};
+    color: ${props => props.active ? '' : blue};
   }
 `;
 

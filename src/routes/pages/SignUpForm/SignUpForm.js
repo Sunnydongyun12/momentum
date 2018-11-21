@@ -4,7 +4,6 @@ import { withFormik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import CTABtn from 'components/CTABtn';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 const StyledLabel = styled.label`
   text-transform: uppercase;
@@ -39,10 +38,10 @@ const NextBtn = styled(CTABtn)`
   font-size: 1.3em;
 `;
 
-const SignUpForm = ({ values, errors, touched, isSubmitting }) => (
+const SignUpForm = ({ user, values, errors, touched, isSubmitting }) => (
   <Form style={{ marginTop: '2em' }}>
     <div>
-      <div><StyledLabel for="email">Email</StyledLabel></div>
+      <div><StyledLabel htmlFor="email">Email</StyledLabel></div>
       <TextInput
         type="email"
         name="email"
@@ -52,8 +51,9 @@ const SignUpForm = ({ values, errors, touched, isSubmitting }) => (
     </div>
 
     <div>
-      <div><StyledLabel for="username">Username</StyledLabel></div>
+      <div><StyledLabel htmlFor="username">Username</StyledLabel></div>
       <TextInput
+        autoComplete="username"
         type="text"
         name="username"
         style={{ width: '300px' }}
@@ -62,19 +62,18 @@ const SignUpForm = ({ values, errors, touched, isSubmitting }) => (
     </div>
 
     <div>
-      <div><StyledLabel for="password">Password</StyledLabel></div>
+      <div><StyledLabel htmlFor="password">Password</StyledLabel></div>
       <TextInput
+        autoComplete="new-password"
         type="password"
         name="password"
         style={{ width: '300px' }}
         placeholder="Create a password"
       />
     </div>
-    <Link to ="/preferences">
-      <NextBtn theme="pink" type="submit">
+    <NextBtn theme="pink" type="submit">
       Next
-      </NextBtn>
-    </Link>
+    </NextBtn>
   </Form>
 );
 
@@ -83,25 +82,29 @@ SignUpForm.propTypes = {
   errors: PropTypes.object,
   touched: PropTypes.object,
   isSubmitting: PropTypes.bool,
-  goBack: PropTypes.func,
+  updateUser: PropTypes.func,
+  user: PropTypes.object,
 };
 
 const formikForm = withFormik({
-  mapPropsToValues({ zipCode }) {
+  /* if we get initial props from somewhere else and you want to put those values in there initially */
+  /* need to initialize them all to at least empty string to get rid of "uncontrolled to controlled" error */
+  mapPropsToValues({ user }) {
     return {
-      zipCode: zipCode || '',
+      email: (user && user.email) || '',
+      username: (user && user.username) || '',
+      password: '',
     };
   },
   validationSchema: yup.object().shape({
   }),
   handleSubmit(values, {
-    setErrors, resetForm, setSubmitting, props: { goBack },
+    setErrors, resetForm, setSubmitting, props: { updateUser, history },
   }) {
-    setTimeout(() => {
-      setSubmitting(false);
-      resetForm();
-      goBack && goBack();
-    }, 1000);
+    setSubmitting(false);
+    resetForm();
+    updateUser(values);
+    history.push('/preferences');
   },
 })(SignUpForm);
 

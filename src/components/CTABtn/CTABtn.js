@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { preventFocus } from 'lib/accessibilityUtils';
 import styled from 'styled-components';
+import { blue } from 'lib/stylesConstants';
 
 const themes = {
   dark: {
@@ -28,17 +29,17 @@ const themes = {
     border: '2px solid black',
     color: 'black',
     backgroundColor: 'transparent',
-    hoverColor: '#007A87',
+    hoverColor: blue,
     hoverBgColor: 'transparent',
-    hoverBorder: '2px solid #007A87',
+    hoverBorder: `2px solid ${blue}`,
   },
   outlineWhiteBlue: {
     border: '2px solid white',
     color: 'white',
     backgroundColor: 'transparent',
-    hoverColor: '#007A87',
+    hoverColor: blue,
     hoverBgColor: 'transparent',
-    hoverBorder: '2px solid #007A87',
+    hoverBorder: `2px solid ${blue}`,
   },
   pink: {
     border: '1px solid transparent',
@@ -101,7 +102,7 @@ export const CTABtn = ({ onClick, children, theme, ...rest }) => {
 
 CTABtn.propTypes = {
   onClick: PropTypes.func,
-  children: PropTypes.string,
+  children: PropTypes.any,
   theme: PropTypes.string,
 };
 

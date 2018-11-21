@@ -2,15 +2,18 @@ import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
 // importing reducers
 import query from './query/reducer';
 import loggedIn from './loggedIn/reducer';
+import user from './user/reducer';
 
 const initialState = {
   query: '',
-  loggedIn: false,
+  loggedIn: true,
+  user: {},
 };
 // combined reducer
 const reducer = combineReducers({
   query,
   loggedIn,
+  user,
 });
 
 const thunk = store => next => (action) => {
