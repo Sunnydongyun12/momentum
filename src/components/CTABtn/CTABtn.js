@@ -76,7 +76,7 @@ const StyledButton = styled.button`
   background-color: ${props => themes[props.theme].backgroundColor};
   color: ${props => themes[props.theme].color};
 
-  &:hover {
+  &:not(:disabled):hover {
     border: ${props => themes[props.theme].hoverBorder};
     background-color: ${props => themes[props.theme].hoverBgColor};
     color: ${props => themes[props.theme].hoverColor};

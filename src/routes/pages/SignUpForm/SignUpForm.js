@@ -24,7 +24,7 @@ const TextInput = styled(Field)`
   cursor: text;
 
   &:focus {
-    border-color: black;
+    border: 2px solid ${props => props.error ? 'red' : 'black'};
     outline: 0;
     transition: all 0.2s;
   }
@@ -43,6 +43,7 @@ const SignUpForm = ({ user, values, errors, touched, isSubmitting }) => (
     <div>
       <div><StyledLabel htmlFor="email">Email</StyledLabel></div>
       <TextInput
+        error={touched.email && errors.email}
         type="email"
         name="email"
         style={{ width: '300px' }}
@@ -71,7 +72,7 @@ const SignUpForm = ({ user, values, errors, touched, isSubmitting }) => (
         placeholder="Create a password"
       />
     </div>
-    <NextBtn theme="pink" type="submit">
+    <NextBtn theme="pink" type="submit" disabled={Object.keys(touched).length === 0 || Object.keys(errors).length !== 0} >
       Next
     </NextBtn>
   </Form>
@@ -97,6 +98,16 @@ const formikForm = withFormik({
     };
   },
   validationSchema: yup.object().shape({
+    username: yup
+      .string()
+      .required('Username is required.'),
+    email: yup
+      .string()
+      .email()
+      .required('Email is required.'),
+    password: yup
+      .string()
+      .required('Passowrd is required.'),
   }),
   handleSubmit(values, {
     setErrors, resetForm, setSubmitting, props: { updateUser, history },
