@@ -1,6 +1,6 @@
 import React from 'react';
 import SignUpForm from '../SignUpForm';
-import Stepper from 'components/Stepper/Stepper';
+import Stepper from 'components/Stepper';
 import styled from 'styled-components';
 
 const Content = styled.div`

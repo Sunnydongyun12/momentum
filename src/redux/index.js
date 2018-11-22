@@ -6,7 +6,7 @@ import user from './user/reducer';
 
 const initialState = {
   query: '',
-  loggedIn: true,
+  loggedIn: false,
   user: {},
 };
 // combined reducer

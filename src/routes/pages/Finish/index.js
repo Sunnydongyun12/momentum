@@ -1,18 +1,21 @@
 import { connect } from 'react-redux';
-import TopNav from './TopNav';
+import Finish from './Finish';
 import { withRouter } from 'react-router-dom';
+import { logIn } from 'redux/loggedIn/actions';
 
 const mapStateToProps = state => ({
-  loggedIn: state.loggedIn,
   user: state.user,
 });
 
 const mapDispatchToProps = dispatch => ({
+  logIn: () => {
+    dispatch(logIn());
+  },
 });
 
 const view = withRouter(connect(
   mapStateToProps,
   mapDispatchToProps,
-)(TopNav));
+)(Finish));
 
 export default view;

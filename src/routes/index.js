@@ -11,6 +11,7 @@ import ProviderList from 'routes/pages/ProviderList';
 import ProviderProfile from 'routes/pages/ProviderProfile';
 import { Switch } from 'react-router';
 import Book from './pages/Book';
+import Finish from './pages/Finish';
 import { ProtectedRoute } from './ProtectedRoute';
 
 class Root extends React.Component {
@@ -25,6 +26,7 @@ class Root extends React.Component {
               <Route exact path="/providers/:providerId" render={ProviderProfile} />
               <ProtectedRoute exact path="/providers" render={ProviderList} />
               <Route exact path="/preferences" render={Preferences} />
+              <Route exact path="/signup/finish" render={Finish} />
               <Route exact path="/signup" render={SignUp} />
               <Route exact path="/book" render={Book} />
               <Route component={Home} />

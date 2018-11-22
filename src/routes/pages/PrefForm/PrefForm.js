@@ -79,7 +79,7 @@ const NextBtn = styled(CTABtn)`
   font-size: 1.3em;
 `;
 
-const PrefForm = ({ values, errors, touched, isSubmitting }) => (
+const PrefForm = ({ values, errors, touched, isSubmitting, updatePreferences }) => (
   <Form>
 
     <Heading>Where do you want to leave your stuff?</Heading>
@@ -150,8 +150,8 @@ const PrefForm = ({ values, errors, touched, isSubmitting }) => (
     <NextBtn theme="pink" type="submit">
       Next
     </NextBtn>
-    
-    <Link to="/signup">
+
+    <Link to="/signup" onClick={() => updatePreferences(values)}>
       <NextBtn theme="outlineBlue">
       Previous
       </NextBtn>
@@ -164,6 +164,7 @@ PrefForm.propTypes = {
   errors: PropTypes.object,
   touched: PropTypes.object,
   isSubmitting: PropTypes.bool,
+  updatePreferences: PropTypes.func,
 };
 
 const formikForm = withFormik({
@@ -194,7 +195,7 @@ const formikForm = withFormik({
     setSubmitting(false);
     resetForm();
     updatePreferences(values);
-    history.push('/signup');
+    history.push('/signup/finish');
   },
 })(PrefForm);
 

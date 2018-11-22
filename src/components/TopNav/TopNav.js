@@ -124,26 +124,27 @@ class TopNav extends React.Component {
   }
 
   render() {
-
+    const { loggedIn, user } = this.props;
+    
     return (
       <Container>
         <StyledNav>
           <Title  onClick={this.closeDropdown} to="/home">
             <span role="img" aria-label="box" style={{ marginRight: '5px' }}>📦</span>
-        Momentum
+            Momentum
           </Title>
 
           <Right>
-            {this.props.loggedIn && <StyledLink  onClick={this.closeDropdown} to="/providers" activeClassName={activeClassName}>Providers</StyledLink> }
+            {loggedIn && <StyledLink  onClick={this.closeDropdown} to="/providers" activeClassName={activeClassName}>Providers</StyledLink> }
 
-            { this.props.loggedIn && (
+            { loggedIn && (
               <AccountButton onClick={this.handleAccountClick}>
-                Username
+                {user.username}
                 <FontAwesomeIcon style={{ marginLeft: '5px' }} icon="caret-down"/>
               </AccountButton>
             )}
 
-            {!this.props.loggedIn && <CTABtn theme="outlineWhiteBlue">Sign In</CTABtn>}
+            {!loggedIn && <CTABtn theme="outlineWhiteBlue">Sign In</CTABtn>}
           </Right>
         </StyledNav>
 
