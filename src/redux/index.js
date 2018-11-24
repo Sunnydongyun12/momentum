@@ -3,17 +3,20 @@ import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
 import query from './query/reducer';
 import loggedIn from './loggedIn/reducer';
 import user from './user/reducer';
+import providerFilters from './providerFilters/reducer';
 
 const initialState = {
   query: '',
   loggedIn: false,
   user: {},
+  providerFilters: [],
 };
 // combined reducer
 const reducer = combineReducers({
   query,
   loggedIn,
   user,
+  providerFilters,
 });
 
 const thunk = store => next => (action) => {

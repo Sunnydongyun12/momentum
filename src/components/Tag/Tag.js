@@ -37,10 +37,16 @@ const Icon = styled(FontAwesomeIcon)`
 class Tag extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { active: false };
+    const isSelected = this.props.providerFilters.includes(this.props.children);
+    this.state = { active: isSelected };
   }
 
   handleClick = () => {
+    if (this.state.active) {
+      this.props.removeFilter(this.props.children);
+    } else {
+      this.props.addFilter(this.props.children);
+    }
     this.setState({ active: !this.state.active });
   };
 

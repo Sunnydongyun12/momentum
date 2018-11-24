@@ -38,8 +38,6 @@ export const SolutionList = () => {
 
       <ListView>
         <PCardList />
-        <PCardList />
-        <PCardList />
       </ListView>
 
     </Content>

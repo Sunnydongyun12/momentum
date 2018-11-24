@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ProviderCard from 'components/ProviderCard';
 import styled from 'styled-components';
 
@@ -9,6 +10,7 @@ const cards = [
     imgName: 'test',
     description: '10 * 10 ft storage place during summer 2018',
     zipCode: '55555',
+    tags: ['10x10', 'Winter'],
   },
   {
     name: 'First Last',
@@ -16,6 +18,7 @@ const cards = [
     imgName: 'test',
     description: '5 * 5 ft storage place during summer 2018',
     zipCode: '55555',
+    tags: ['5x5', 'Summer'],
   },
   {
     name: 'hmm',
@@ -23,6 +26,7 @@ const cards = [
     imgName: 'test',
     description: '10 * 10 ft storage place during summer 2018',
     zipCode: '55555',
+    tags: ['10x10', 'Summer'],
   },
   {
     name: 'First Last',
@@ -30,6 +34,7 @@ const cards = [
     imgName: 'test',
     description: '10 * 10 ft storage place during summer 2018',
     zipCode: '55555',
+    tags: ['10x10', 'Summer'],
   },
   {
     name: 'First Last',
@@ -37,6 +42,7 @@ const cards = [
     imgName: 'test',
     description: '5 * 5 ft storage place during summer 2018',
     zipCode: '55555',
+    tags: ['10x10', 'Summer'],
   },
   {
     name: 'hmm',
@@ -44,6 +50,7 @@ const cards = [
     imgName: 'test',
     description: '10 * 10 ft storage place during summer 2018',
     zipCode: '55555',
+    tags: ['5x5'],
   },
 ];
 
@@ -56,14 +63,25 @@ const List = styled.div`
   grid-row-gap: 2em;
 `;
 
-const PCardList = () => {
+const numOverlapping = (list1, list2) => {
+  return list1.reduce((acc, el) => list2.includes(el) ? acc + 1 : acc, 0);
+};
+
+// add the tag filtering stuff here
+const PCardList = ({ providerFilters }) => {
   return (
     <List>
-      {cards.map(props => (
-        <ProviderCard {...props} />
-      ))}
+      {cards
+        .filter(({ tags }) => numOverlapping(tags, providerFilters) === providerFilters.length)
+        .map(props => (
+          <ProviderCard {...props} />
+        ))}
     </List>
   );
+};
+
+PCardList.propTypes = {
+  providerFilters: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default PCardList;
