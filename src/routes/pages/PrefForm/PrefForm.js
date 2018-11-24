@@ -79,91 +79,108 @@ const NextBtn = styled(CTABtn)`
   font-size: 1.3em;
 `;
 
-const PrefForm = ({ values, errors, touched, isSubmitting, updatePreferences }) => (
-  <Form>
-
-    <Heading>Where do you want to leave your stuff?</Heading>
-    <div>
-      <div><StyledLabel htmlFor="zipCode">Zip Code</StyledLabel></div>
-      <TextInput
-        type="text"
-        name="zipCode"
-        style={{ width: '100px' }}
-        placeholder="Anywhere"
-      />
-    </div>
-
-    <Heading>How much space do you need?</Heading>
-    <SpaceContainer>
-
-      <div>
-        <div><StyledLabel htmlFor="length">Length</StyledLabel></div>
-        <TextInput
-          type="number"
-          name="length"
-          placeholder="ft"
-        />
-      </div>
-
-      <div>
-        <div><StyledLabel htmlFor="width">Width</StyledLabel></div>
-        <TextInput
-          type="number"
-          name="width"
-          placeholder="ft"
-        />
-      </div>
-
-      <div>
-        <div><StyledLabel htmlFor="height">Height</StyledLabel></div>
-        <TextInput
-          type="number"
-          name="height"
-          placeholder="ft"
-        />
-      </div>
-    </SpaceContainer>
-
-    <Heading>How long do you want to store it for?</Heading>
-
-    <DateContainer>
-
-      <DateField>
-        <div><StyledLabel htmlFor="startDate">Start Date</StyledLabel></div>
-        <DateInput
-          type="date"
-          name="startDate"
-          placeholder="mm/dd/yyyy"
-        />
-      </DateField>
-
-      <DateField>
-        <div><StyledLabel htmlFor="endDate" >End Date</StyledLabel></div>
-        <DateInput
-          type="date"
-          name="endDate"
-          placeholder="mm/dd/yyyy"
-        />
-      </DateField>
-
-    </DateContainer>
-    <NextBtn theme="pink" type="submit">
-      Next
-    </NextBtn>
-
-    <Link to="/signup" onClick={() => updatePreferences(values)}>
-      <NextBtn theme="outlineBlue">
-      Previous
+const PrefForm = ({ values, errors, touched, isSubmitting, updatePreferences, loggedIn }) => { 
+  const SignUpFlowButtons = (
+    <React.Fragment>
+      <NextBtn theme="pink" type="submit">
+        Next
       </NextBtn>
-    </Link>
-  </Form>
-);
+
+      <Link to="/signup" onClick={() => updatePreferences(values)}>
+        <NextBtn theme="outlineBlue">
+          Previous
+        </NextBtn>
+      </Link>
+    </React.Fragment>
+  );
+
+  const SignedInButton = (
+    <NextBtn theme="pink" type="submit">
+      Save
+    </NextBtn>
+  );
+
+  return(
+    <Form>
+
+      <Heading>Where do you want to leave your stuff?</Heading>
+      <div>
+        <div><StyledLabel htmlFor="zipCode">Zip Code</StyledLabel></div>
+        <TextInput
+          type="text"
+          name="zipCode"
+          style={{ width: '100px' }}
+          placeholder="Anywhere"
+        />
+      </div>
+
+      <Heading>How much space do you need?</Heading>
+      <SpaceContainer>
+
+        <div>
+          <div><StyledLabel htmlFor="length">Length</StyledLabel></div>
+          <TextInput
+            type="number"
+            name="length"
+            placeholder="ft"
+          />
+        </div>
+
+        <div>
+          <div><StyledLabel htmlFor="width">Width</StyledLabel></div>
+          <TextInput
+            type="number"
+            name="width"
+            placeholder="ft"
+          />
+        </div>
+
+        <div>
+          <div><StyledLabel htmlFor="height">Height</StyledLabel></div>
+          <TextInput
+            type="number"
+            name="height"
+            placeholder="ft"
+          />
+        </div>
+      </SpaceContainer>
+
+      <Heading>How long do you want to store it for?</Heading>
+
+      <DateContainer>
+
+        <DateField>
+          <div><StyledLabel htmlFor="startDate">Start Date</StyledLabel></div>
+          <DateInput
+            type="date"
+            name="startDate"
+            placeholder="mm/dd/yyyy"
+          />
+        </DateField>
+
+        <DateField>
+          <div><StyledLabel htmlFor="endDate" >End Date</StyledLabel></div>
+          <DateInput
+            type="date"
+            name="endDate"
+            placeholder="mm/dd/yyyy"
+          />
+        </DateField>
+
+      </DateContainer>
+
+      {loggedIn ? SignedInButton : SignUpFlowButtons}
+
+    </Form>
+  );
+};
 
 PrefForm.propTypes = {
   values: PropTypes.object,
   errors: PropTypes.object,
   touched: PropTypes.object,
   isSubmitting: PropTypes.bool,
+  loggedIn: PropTypes.bool,
   updatePreferences: PropTypes.func,
 };
 
@@ -190,12 +207,13 @@ const formikForm = withFormik({
   validationSchema: yup.object().shape({
   }),
   handleSubmit(values, {
-    setErrors, resetForm, setSubmitting, props: { history, updatePreferences },
+    setErrors, resetForm, setSubmitting, props: { history, updatePreferences, loggedIn },
   }) {
     setSubmitting(false);
     resetForm();
     updatePreferences(values);
-    history.push('/signup/finish');
+    const nextLink = loggedIn ? '/providers' : '/signup/finish';
+    history.push(nextLink);
   },
 })(PrefForm);
 

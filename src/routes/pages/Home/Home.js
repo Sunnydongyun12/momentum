@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import CTABtn from 'components/CTABtn';
 import styled from 'styled-components';
 import { getSvg } from 'lib/assetsUtils';
@@ -21,7 +22,17 @@ const ButtonGrid = styled.div`
   grid-column-gap: 2em;
 `;
 
-export const Home = () => {
+export const Home = ({ loggedIn }) => {
+
+  const SignUp = (
+    <Link to="/signup" >
+      <CTABtn style={{ width: '430px' }} theme="pink">Sign Up</CTABtn>
+    </Link>);
+  
+  const Providers = (
+    <Link to="/providers" >
+      <CTABtn style={{ width: '430px' }} theme="pink">Providers</CTABtn>
+    </Link>);
   
   return (
     <Content>
@@ -33,12 +44,14 @@ export const Home = () => {
       </div>
 
       <ButtonGrid>
-        <Link to="/signup" >
-          <CTABtn style={{ width: '430px' }} theme="pink">Sign Up</CTABtn>
-        </Link>
+        {loggedIn ? Providers : SignUp}
       </ButtonGrid>
     </Content>
   );
+};
+
+Home.propTypes = {
+  loggedIn: PropTypes.bool,
 };
 
 export default Home;

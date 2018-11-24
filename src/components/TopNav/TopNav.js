@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import CTABtn from 'components/CTABtn';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { topNavHeight } from 'lib/stylesConstants';
 
@@ -144,7 +144,7 @@ class TopNav extends React.Component {
               </AccountButton>
             )}
 
-            {!loggedIn && <CTABtn theme="outlineWhiteBlue">Sign In</CTABtn>}
+            {!loggedIn && <Link to="/signin"><CTABtn theme="outlineWhiteBlue">Sign In</CTABtn></Link>}
           </Right>
         </StyledNav>
 
@@ -164,6 +164,7 @@ class TopNav extends React.Component {
 
 TopNav.propTypes = {
   loggedIn: PropTypes.bool,
+  user: PropTypes.object,
 };
 
 export default TopNav;

@@ -1,5 +1,6 @@
 import React from 'react';
 import PrefForm from 'routes/pages/PrefForm';
+import Stepper from 'components/Stepper';
 import styled from 'styled-components';
 
 const Content = styled.div`
@@ -18,6 +19,7 @@ const Subheading = styled.div`
 const Preferences = () => {
   return (
     <Content>
+      <Stepper currentStep={1} steps={['Account Information', 'Storage Information', 'Finish']} />
       <Subheading>These preferences will be used to match you with potential storage providers.</Subheading>
       <PrefForm />
     </Content>

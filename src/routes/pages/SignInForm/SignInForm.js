@@ -12,11 +12,6 @@ const StyledLabel = styled.label`
   /* font-weight: 300; */
 `;
 
-const StyledErrorLabel = styled(StyledLabel)`
-  color: red;
-  text-transform: none;
-`;
-
 const TextInput = styled(Field)`
   box-sizing: border-box;
   background: #eee;
@@ -43,15 +38,13 @@ const NextBtn = styled(CTABtn)`
   font-size: 1.3em;
 `;
 
-const SignUpForm = ({ user, values, errors, touched, isSubmitting }) => (
+const SignInForm = ({ user, values, errors, touched, isSubmitting }) => (
   <Form style={{ marginTop: '2em' }}>
     <div>
       <div>
         <StyledLabel htmlFor="email">Email</StyledLabel>
-        {touched.email && errors.email && <StyledErrorLabel htmlFor="email">{errors.email}</StyledErrorLabel>}
       </div>
       <TextInput
-        error={touched.email && errors.email}
         type="text"
         name="email"
         style={{ width: '300px' }}
@@ -61,46 +54,30 @@ const SignUpForm = ({ user, values, errors, touched, isSubmitting }) => (
 
     <div>
       <div>
-        <StyledLabel htmlFor="username">Username</StyledLabel>
-        {touched.username && errors.username && <StyledErrorLabel htmlFor="username">{errors.username}</StyledErrorLabel>}
-      </div>
-      <TextInput
-        autoComplete="username"
-        error={touched.username && errors.username}
-        type="text"
-        name="username"
-        style={{ width: '300px' }}
-        placeholder="Create a username"
-      />
-    </div>
-
-    <div>
-      <div>
         <StyledLabel htmlFor="password">Password</StyledLabel>
-        {errors.password && (values.password || touched.password) && <StyledErrorLabel htmlFor="password">{errors.password}</StyledErrorLabel>}
       </div>
       <TextInput
         autoComplete="new-password"
-        error={errors.password && (values.password || touched.password)}
         type="password"
         name="password"
         style={{ width: '300px' }}
         placeholder="Create a password"
       />
     </div>
-    <NextBtn theme="pink" type="submit" disabled={(Object.keys(touched).length === 0 && !values.password) || Object.keys(errors).length !== 0} >
+    <NextBtn theme="pink" type="submit">
       Next
     </NextBtn>
   </Form>
 );
 
-SignUpForm.propTypes = {
+SignInForm.propTypes = {
   values: PropTypes.object,
   errors: PropTypes.object,
   touched: PropTypes.object,
   isSubmitting: PropTypes.bool,
   updateUser: PropTypes.func,
   user: PropTypes.object,
+  logIn: PropTypes.func,
 };
 
 const formikForm = withFormik({
@@ -109,31 +86,26 @@ const formikForm = withFormik({
   mapPropsToValues({ user }) {
     return {
       email: (user && user.email) || '',
-      username: (user && user.username) || '',
       password: '',
     };
   },
   validationSchema: yup.object().shape({
-    username: yup
-      .string()
-      .required('Username is required.'),
     email: yup
       .string()
-      .email('Must be a valid email.')
       .required('Email is required.'),
     password: yup
       .string()
-      .min(8, 'Requires at least 8 characters.')
       .required('Password is required.'),
   }),
   handleSubmit(values, {
-    setErrors, resetForm, setSubmitting, props: { updateUser, history },
+    setErrors, resetForm, setSubmitting, props: { logIn, updateUser, history },
   }) {
     setSubmitting(false);
     resetForm();
     updateUser(values);
-    history.push('/signup/preferences');
+    logIn();
+    history.push('/providers');
   },
-})(SignUpForm);
+})(SignInForm);
 
 export default formikForm;

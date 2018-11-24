@@ -1,22 +1,25 @@
 import { connect } from 'react-redux';
-import PrefForm from './PrefForm';
+import SignInForm from './SignInForm';
 import { withRouter } from 'react-router-dom';
-import { updatePreferences } from 'redux/user/actions';
+import { updateUser } from 'redux/user/actions';
+import { logIn } from 'redux/loggedIn/actions';
 
 const mapStateToProps = state => ({
   user: state.user,
-  loggedIn: state.loggedIn,
 });
 
 const mapDispatchToProps = dispatch => ({
-  updatePreferences: (preferences) => {
-    dispatch(updatePreferences(preferences));
+  updateUser: (user) => {
+    dispatch(updateUser(user));
+  },
+  logIn: () => {
+    dispatch(logIn());
   },
 });
 
 const view = withRouter(connect(
   mapStateToProps,
   mapDispatchToProps,
-)(PrefForm));
+)(SignInForm));
 
 export default view;
