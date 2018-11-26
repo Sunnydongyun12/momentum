@@ -1,0 +1,45 @@
+// .try {
+//   // display: block;
+//   position: fixed;
+//   width: 500px;
+//   height: 100%;
+//   z-index: 10;
+//   top: 50px;
+//   left: 64px;
+//   // margin: 0 0 0 -200px;
+//   background: rgb(250, 137, 137);
+// }
+
+.MessageBox {
+  position: fixed;
+  width: 500px;
+  height: 80%;
+  z-index: 120;
+  top: 50px;
+  left: 64px;
+  padding: 2px 2px;
+  opacity: 0.95;
+  // background: rgb(190, 184, 184);
+}
+
+#hide {
+  position: fixed;
+  top: 50px;
+  right: 0;
+  z-index: 99;
+}
+
+.self {
+  border-radius: 5px;
+  border: 1px solid rgb(190, 184, 184);
+  padding: 15px;
+  width: 300px;
+}
+
+.others {
+  background: rgb(250, 137, 137);
+  border-radius: 5px;
+  border: 1px solid gb(250, 137, 137);
+  padding: 15px;
+  width: 300px;
+}

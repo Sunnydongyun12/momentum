@@ -16,6 +16,7 @@ import ProviderList from 'routes/pages/ProviderList';
 import ProviderProfile from 'routes/pages/ProviderProfile';
 import { Switch } from 'react-router';
 import Book from './pages/Book';
+import Messenger from 'routes/pages/Messenger';
 
 import { ProtectedRoute } from './ProtectedRoute';
 
@@ -28,16 +29,26 @@ class Root extends React.Component {
             <TopNav />
             <Switch>
               <Route exact path="/home" render={Home} />
-              <Route exact path="/providers/:providerId" render={ProviderProfile} />
+              <Route
+                exact
+                path="/providers/:providerId"
+                render={ProviderProfile}
+              />
               <ProtectedRoute exact path="/providers" render={ProviderList} />
               <ProtectedRoute exact path="/preferences" render={Preferences} />
 
-              <Route exact path="/signup/preferences" render={SignUpPreferences} />
+              <Route
+                exact
+                path="/signup/preferences"
+                render={SignUpPreferences}
+              />
               <Route exact path="/signup/finish" render={Finish} />
+              <Route exact path="/signup" render={SignUp} />
               <Route exact path="/signup" render={SignUp} />
 
               <Route exact path="/signin" render={SignIn} />
               <Route exact path="/book" render={Book} />
+              <Route exact path="/messenger" render={Messenger} />
               <Route component={Home} />
             </Switch>
           </div>

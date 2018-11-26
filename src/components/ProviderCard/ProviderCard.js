@@ -4,6 +4,7 @@ import { getPng } from 'lib/assetsUtils';
 import CTABtn from 'components/CTABtn';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 const Card = styled.div`
   display: grid;
@@ -43,7 +44,7 @@ const RightSide = styled.div`
 
 const ProviderDescription = styled.div`
   text-align: left;
-  color: #5A5C59;
+  color: #5a5c59;
 `;
 
 const Heading = styled.div`
@@ -88,29 +89,29 @@ const ActionBtn = styled(CTABtn)`
 const ProviderCard = ({ description, zipCode, imgName, name, history }) => {
   return (
     <Card>
-
       <ImgBackground>
         <ProfilePic alt={imgName} src={getPng(imgName)} />
       </ImgBackground>
 
       <Middle>
         <Heading>{name}</Heading>
-          
+
         <ZipCode>
           <TextIcon icon="map-marker-alt" />
-           Zip Code: {zipCode}
+          Zip Code: {zipCode}
         </ZipCode>
 
         <ActionBtn theme="pink" onClick={() => history.push('/providers/2')}>
-          <TextIcon icon="user" color="#fff"/>
+          <TextIcon icon="user" color="#fff" />
           <span>View Profile</span>
         </ActionBtn>
 
-        <ActionBtn theme="outlineBlue">
-          <TextIcon style={{ marginLeft: '-20px' }} icon="envelope"/>
-          <span>Message</span>
-        </ActionBtn> 
-
+        <NavLink to="/messenger">
+          <ActionBtn theme="outlineBlue">
+            <TextIcon style={{ marginLeft: '-20px' }} icon="envelope" />
+            <span>Message</span>
+          </ActionBtn>
+        </NavLink>
       </Middle>
 
       <RightSide>
@@ -126,7 +127,7 @@ ProviderCard.propTypes = {
   name: PropTypes.string,
   imgName: PropTypes.string,
   zipCode: PropTypes.string,
-  history: PropTypes.object,
+  history: PropTypes.object
 };
 
 export default ProviderCard;

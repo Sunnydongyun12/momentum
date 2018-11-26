@@ -6,7 +6,6 @@ import { Link, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { topNavHeight } from 'lib/stylesConstants';
 
-
 const Title = styled(NavLink)`
   align-self: center;
   justify-self: center;
@@ -26,7 +25,7 @@ const Right = styled.div`
 
 const activeClassName = 'nav-item-active';
 const StyledLink = styled(NavLink).attrs({
-  activeClassName,
+  activeClassName
 })`
   color: #eee;
   font-size: 1.3rem;
@@ -41,12 +40,12 @@ const StyledLink = styled(NavLink).attrs({
   /* height: 50px; */
 
   &:hover {
-    color: #FC5C63;
+    color: #fc5c63;
     /* border-bottom: 5px solid #FC5C63;; */
   }
 
   &.${activeClassName} {
-    color: #FC5C63;
+    color: #fc5c63;
     /* border-bottom: 5px solid #FC5C63;; */
   }
 `;
@@ -65,7 +64,7 @@ const AccountButton = styled.div`
   cursor: pointer;
 
   &:hover {
-    color: #FC5C63;
+    color: #fc5c63;
   }
 `;
 
@@ -83,7 +82,7 @@ const Dropdown = styled.div`
 
 const Container = styled.div`
   position: sticky;
-  top: 0; 
+  top: 0;
   z-index: 1;
 `;
 
@@ -108,56 +107,95 @@ const Backdrop = styled.div`
 `;
 
 class TopNav extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      acctDropdownShown: false,
+      acctDropdownShown: false
     };
   }
 
   handleAccountClick = () => {
     this.setState({ acctDropdownShown: !this.state.acctDropdownShown });
-  }
+  };
 
   closeDropdown = () => {
     this.setState({ acctDropdownShown: false });
-  }
+  };
 
   render() {
     const { loggedIn, user, logOut } = this.props;
-    
+
     return (
       <Container>
         <StyledNav>
-          <Title  onClick={this.closeDropdown} to="/home">
-            <span role="img" aria-label="box" style={{ marginRight: '5px' }}>📦</span>
+          <Title onClick={this.closeDropdown} to="/home">
+            <span role="img" aria-label="box" style={{ marginRight: '5px' }}>
+              📦
+            </span>
             Momentum
           </Title>
 
           <Right>
-            {loggedIn && <StyledLink  onClick={this.closeDropdown} to="/providers" activeClassName={activeClassName}>Providers</StyledLink> }
+            {loggedIn && (
+              <StyledLink
+                onClick={this.closeDropdown}
+                to="/providers"
+                activeClassName={activeClassName}
+              >
+                Providers
+              </StyledLink>
+            )}
 
-            { loggedIn && (
+            {loggedIn && (
               <AccountButton onClick={this.handleAccountClick}>
                 {user.username}
-                <FontAwesomeIcon style={{ marginLeft: '5px' }} icon="caret-down"/>
+                <FontAwesomeIcon
+                  style={{ marginLeft: '5px' }}
+                  icon="caret-down"
+                />
               </AccountButton>
             )}
 
-            {!loggedIn && <Link to="/signin"><CTABtn theme="outlineWhiteBlue">Sign In</CTABtn></Link>}
+            {!loggedIn && (
+              <Link to="/signin">
+                <CTABtn theme="outlineWhiteBlue">Sign In</CTABtn>
+              </Link>
+            )}
           </Right>
         </StyledNav>
 
-        {this.state.acctDropdownShown && 
+        {this.state.acctDropdownShown && (
           <Dropdown onClick={this.handleAccountClick}>
             <div style={{ background: '#242729' }}>
-              <StyledLink style={{ marginBottom: '1em', display: 'block' }} to="/preferences" activeClassName={'f'}>Settings</StyledLink>
-              <StyledLink style={{ marginBottom: '1em', display: 'block' }} onClick={logOut} to="/home" activeClassName={'f'}>Log Out</StyledLink>
+              <StyledLink
+                style={{ marginBottom: '1em', display: 'block' }}
+                to="/messenger"
+                activeClassName={'f'}
+              >
+                Messenger
+              </StyledLink>
+              <StyledLink
+                style={{ marginBottom: '1em', display: 'block' }}
+                to="/preferences"
+                activeClassName={'f'}
+              >
+                Settings
+              </StyledLink>
+              <StyledLink
+                style={{ marginBottom: '1em', display: 'block' }}
+                onClick={logOut}
+                to="/home"
+                activeClassName={'f'}
+              >
+                Log Out
+              </StyledLink>
             </div>
           </Dropdown>
-        }
+        )}
 
-        {this.state.acctDropdownShown && <Backdrop onClick={this.handleAccountClick}/>}
+        {this.state.acctDropdownShown && (
+          <Backdrop onClick={this.handleAccountClick} />
+        )}
       </Container>
     );
   }
@@ -166,7 +204,7 @@ class TopNav extends React.Component {
 TopNav.propTypes = {
   loggedIn: PropTypes.bool,
   user: PropTypes.object,
-  logOut: PropTypes.func,
+  logOut: PropTypes.func
 };
 
 export default TopNav;
