@@ -4,6 +4,7 @@ import query from './query/reducer';
 import loggedIn from './loggedIn/reducer';
 import user from './user/reducer';
 import providerFilters from './providerFilters/reducer';
+import providersReducers from './providers/reducer';
 
 const initialState = {
   query: '',
@@ -17,6 +18,7 @@ const reducer = combineReducers({
   loggedIn,
   user,
   providerFilters,
+  ...providersReducers,
 });
 
 const thunk = store => next => (action) => {
