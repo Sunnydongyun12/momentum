@@ -23,19 +23,15 @@ export const loadBookingsSucess = (json) => ({
 
 export const fetchBookings = () => (dispatch) => {
   dispatch(loadBookingsRequest());
-  var bookinglist = [];
+  const bookinglist = [];
   databaseRef.child('booking').on('value', function(snapshot)
   {
     snapshot.forEach(function(childSnapshot){
       bookinglist.push(childSnapshot.val());
     },
     );
-    
+    dispatch(loadBookingsSucess(bookinglist));
   });
-  bookings.items = bookinglist;
-  
-  
-  return dispatch(loadBookingsSucess(bookings));
   
   // return fetch('http://localhost:5000/providers')
   //   .then(
