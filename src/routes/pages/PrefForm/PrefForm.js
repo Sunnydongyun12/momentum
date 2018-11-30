@@ -79,6 +79,13 @@ const NextBtn = styled(CTABtn)`
   font-size: 1.3em;
 `;
 
+
+const StyledErrorLabel = styled(StyledLabel)`
+  color: red;
+  text-transform: none;
+`;
+
+
 const PrefForm = ({ values, errors, touched, isSubmitting, updatePreferences, loggedIn }) => { 
   const SignUpFlowButtons = (
     <React.Fragment>
@@ -102,12 +109,13 @@ const PrefForm = ({ values, errors, touched, isSubmitting, updatePreferences, lo
 
   return(
     <Form>
-
       <Heading>Where do you want to leave your stuff?</Heading>
       <div>
-        <div><StyledLabel htmlFor="zipCode">Zip Code</StyledLabel></div>
+        <div><StyledLabel htmlFor="zipCode">Zip Code</StyledLabel>
+          {touched.zipCode && errors.zipCode && <StyledErrorLabel htmlFor="zipCode">{errors.zipCode}</StyledErrorLabel>}
+        </div>
         <TextInput
-          type="text"
+          type="number"
           name="zipCode"
           style={{ width: '100px' }}
           placeholder="Anywhere"
@@ -118,7 +126,9 @@ const PrefForm = ({ values, errors, touched, isSubmitting, updatePreferences, lo
       <SpaceContainer>
 
         <div>
-          <div><StyledLabel htmlFor="length">Length</StyledLabel></div>
+          <div><StyledLabel htmlFor="length">Length</StyledLabel>
+            {touched.length && errors.length && <StyledErrorLabel htmlFor="length">{errors.length}</StyledErrorLabel>}
+          </div>
           <TextInput
             type="number"
             name="length"
@@ -127,7 +137,9 @@ const PrefForm = ({ values, errors, touched, isSubmitting, updatePreferences, lo
         </div>
 
         <div>
-          <div><StyledLabel htmlFor="width">Width</StyledLabel></div>
+          <div><StyledLabel htmlFor="width">Width</StyledLabel>
+            {touched.width && errors.width && <StyledErrorLabel htmlFor="width">{errors.width}</StyledErrorLabel>}
+          </div>
           <TextInput
             type="number"
             name="width"
@@ -136,7 +148,9 @@ const PrefForm = ({ values, errors, touched, isSubmitting, updatePreferences, lo
         </div>
 
         <div>
-          <div><StyledLabel htmlFor="height">Height</StyledLabel></div>
+          <div><StyledLabel htmlFor="height">Height</StyledLabel>
+            {touched.height && errors.height && <StyledErrorLabel htmlFor="height">{errors.height}</StyledErrorLabel>}
+          </div>
           <TextInput
             type="number"
             name="height"
@@ -150,7 +164,9 @@ const PrefForm = ({ values, errors, touched, isSubmitting, updatePreferences, lo
       <DateContainer>
 
         <DateField>
-          <div><StyledLabel htmlFor="startDate">Start Date</StyledLabel></div>
+          <div><StyledLabel htmlFor="startDate">Start Date</StyledLabel>
+            {touched.startDate && errors.startDate && <StyledErrorLabel htmlFor="startDate">{errors.startDate}</StyledErrorLabel>}
+          </div>
           <DateInput
             type="date"
             name="startDate"
@@ -159,7 +175,9 @@ const PrefForm = ({ values, errors, touched, isSubmitting, updatePreferences, lo
         </DateField>
 
         <DateField>
-          <div><StyledLabel htmlFor="endDate" >End Date</StyledLabel></div>
+          <div><StyledLabel htmlFor="endDate" >End Date</StyledLabel>
+            {touched.endDate && errors.endDate && <StyledErrorLabel htmlFor="endDate">{errors.endDate}</StyledErrorLabel>}
+          </div>
           <DateInput
             type="date"
             name="endDate"
@@ -184,6 +202,26 @@ PrefForm.propTypes = {
   updatePreferences: PropTypes.func,
 };
 
+function getDate() {
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1; 
+  var yyyy = today.getFullYear();
+  if(dd < 10) { dd = `0${dd}`; } 
+  if(mm < 10) { mm = `0${mm}`; } 
+  today = `${mm}/${dd}/${yyyy}`;
+
+  return today;
+}
+
+// var max;
+  
+//   return evt.target.value;
+
+// }
+
+const min = getDate();
+
 const formikForm = withFormik({
   mapPropsToValues({ user }) {
     let prefs = {};
@@ -205,7 +243,33 @@ const formikForm = withFormik({
 
   },
   validationSchema: yup.object().shape({
+    zipCode: yup
+      .number() 
+      .min(10000, 'Must be exactly 5 digits')
+      .max(99999, 'Must be exactly 5 digits')
+      .required('Valid zipcode is required.'),
+    length:yup
+      .number()
+      .required('Required')
+      .test('val', 'Invalid', val => val > 0),
+    width:yup
+      .number()
+      .required('Required')
+      .test('val', 'Invalid', val => val > 0),
+    height:yup
+      .number()
+      .required('Required')
+      .test('val', 'Invalid', val => val > 0),
+    startDate: yup
+      .date()
+      .min(min, 'Enter a date later than today')
+      .required('Start date required'),
+    endDate: yup
+      .date()
+      .min(min, 'Enter a date later than today')
+      .required('End date required'),
   }),
+  
   handleSubmit(values, {
     setErrors, resetForm, setSubmitting, props: { history, updatePreferences, loggedIn },
   }) {
