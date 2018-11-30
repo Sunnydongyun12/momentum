@@ -38,11 +38,17 @@ const NextBtn = styled(CTABtn)`
   font-size: 1.3em;
 `;
 
+const StyledErrorLabel = styled(StyledLabel)`
+  color: red;
+  text-transform: none;
+`;
+
 const SignInForm = ({ user, values, errors, touched, isSubmitting }) => (
   <Form style={{ marginTop: '2em' }}>
     <div>
       <div>
         <StyledLabel htmlFor="email">Email</StyledLabel>
+        {touched.email && errors.email && <StyledErrorLabel htmlFor="email">{errors.email}</StyledErrorLabel>}
       </div>
       <TextInput
         type="text"
@@ -55,6 +61,7 @@ const SignInForm = ({ user, values, errors, touched, isSubmitting }) => (
     <div>
       <div>
         <StyledLabel htmlFor="username">Username</StyledLabel>
+        {touched.username && errors.username && <StyledErrorLabel htmlFor="username">{errors.username}</StyledErrorLabel>}
       </div>
       <TextInput
         type="text"
@@ -67,6 +74,7 @@ const SignInForm = ({ user, values, errors, touched, isSubmitting }) => (
     <div>
       <div>
         <StyledLabel htmlFor="password">Password</StyledLabel>
+        {errors.password && (values.password || touched.password) && <StyledErrorLabel htmlFor="password">{errors.password}</StyledErrorLabel>}
       </div>
       <TextInput
         autoComplete="new-password"
@@ -105,12 +113,14 @@ const formikForm = withFormik({
   validationSchema: yup.object().shape({
     email: yup
       .string()
+      .email('Must be a valid email.')
       .required('Email is required.'),
     username: yup
       .string()
       .required('Username is required.'),
     password: yup
       .string()
+      .test('len', 'Enter a valid password', val => val.length > 7)
       .required('Password is required.'),
   }),
   handleSubmit(values, {
