@@ -120,7 +120,7 @@ const formikForm = withFormik({
       .required('Username is required.'),
     password: yup
       .string()
-      .test('len', 'Enter a valid password', val => val.length > 7)
+      .min(8, 'Requires at least 8 characters.')
       .required('Password is required.'),
   }),
   handleSubmit(values, {
