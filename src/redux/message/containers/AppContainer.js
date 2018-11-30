@@ -24,7 +24,7 @@ const parseTimestamp = timestamp => {
 
   return `${date.getDate()} ${
     months[date.getMonth()]
-    } ${date.getHours()}:${date.getMinutes()}`;
+  } ${date.getHours()}:${date.getMinutes()}`;
 };
 // const mes = () => {};
 
@@ -32,7 +32,7 @@ const parseMessages = messages =>
   messages
     .map(message => ({
       ...message,
-      parsedDate: parseTimestamp(message.timestamp)
+      parsedDate: parseTimestamp(message.timestamp),
     }))
     .reduce(
       (result, current) => {
@@ -42,12 +42,14 @@ const parseMessages = messages =>
           previous[previous.length - 1].authorId === current.authorId
         ) {
           result[result.length - 1].push(current);
+          
           return result;
         }
         result.push([current]);
+        
         return result;
       },
-      [[]]
+      [[]],
     );
 
 const mapStateToProps = state => {
@@ -62,9 +64,9 @@ const mapDispatchToProps = dispatch => ({
     dispatch(
       sendMessage({
         text: data,
-      })
+      }),
     );
-  }
+  },
 });
 
 const AppContainer = connect(

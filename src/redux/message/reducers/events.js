@@ -6,8 +6,8 @@ const initialState = [
     id: 'bot-message',
     authorId: 'bot',
     text: 'Hello, how can I help you?',
-    timestamp: Date.now()
-  }
+    timestamp: Date.now(),
+  },
 ];
 
 export default createReducer(initialState, {
@@ -24,6 +24,7 @@ export default createReducer(initialState, {
     if (!foundEvent.length) {
       return [...state, action.payload];
     }
+    
     return state;
   },
   [actionTypes.SEND_MESSAGE](state, action) {
@@ -36,9 +37,9 @@ export default createReducer(initialState, {
       {
         ...action.payload,
         status: 'SENDING',
-        own: true
-      }
+        own: true,
+      },
     ];
-  }
+  },
 });
 export const getEvents = state => state.events;

@@ -32,7 +32,7 @@ class PCardList extends React.Component {
     }
 
     for (const key of Object.keys(providers.items)) {
-      this.providerList.push({ provider_id: key, ...providers.items[key] });
+      this.providerList.push({ providerId: key, ...providers.items[key] });
     }
     
     return (
@@ -40,7 +40,7 @@ class PCardList extends React.Component {
         {this.providerList
           .filter(({ tags }) => numOverlapping(tags, providerFilters) === providerFilters.length)
           .map(props => (
-            <ProviderCard {...props} />
+            <ProviderCard {...props} key={props.providerId} />
           ))}
       </List>
     );

@@ -86,11 +86,11 @@ const ActionBtn = styled(CTABtn)`
   width: 200px;
 `;
 
-const ProviderCard = ({ description, zipCode, imgName, name, history }) => {
+const ProviderCard = ({ providerId, description, zipCode, imgName, name, history }) => {
   return (
     <Card>
       <ImgBackground>
-        <ProfilePic alt={imgName} src={getPng(imgName)} />
+        <ProfilePic alt="profile picture" src={getPng(imgName)} />
       </ImgBackground>
 
       <Middle>
@@ -101,7 +101,7 @@ const ProviderCard = ({ description, zipCode, imgName, name, history }) => {
           Zip Code: {zipCode}
         </ZipCode>
 
-        <ActionBtn theme="pink" onClick={() => history.push('/providers/2')}>
+        <ActionBtn theme="pink" onClick={() => history.push(`/providers/${providerId}`)}>
           <TextIcon icon="user" color="#fff" />
           <span>View Profile</span>
         </ActionBtn>
@@ -127,7 +127,8 @@ ProviderCard.propTypes = {
   name: PropTypes.string,
   imgName: PropTypes.string,
   zipCode: PropTypes.string,
-  history: PropTypes.object
+  history: PropTypes.object,
+  providerId: PropTypes.string,
 };
 
 export default ProviderCard;
