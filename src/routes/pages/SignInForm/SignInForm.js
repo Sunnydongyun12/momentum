@@ -81,7 +81,7 @@ const SignInForm = ({ user, values, errors, touched, isSubmitting }) => (
         type="password"
         name="password"
         style={{ width: '300px' }}
-        placeholder="Create a password"
+        placeholder="Password"
       />
     </div>
     <NextBtn theme="pink" type="submit">
