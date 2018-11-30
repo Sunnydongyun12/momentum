@@ -54,7 +54,7 @@ const SignInForm = ({ user, values, errors, touched, isSubmitting }) => (
 
     <div>
       <div>
-        <StyledLabel htmlFor="username">Email</StyledLabel>
+        <StyledLabel htmlFor="username">Username</StyledLabel>
       </div>
       <TextInput
         type="text"

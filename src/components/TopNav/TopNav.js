@@ -25,7 +25,7 @@ const Right = styled.div`
 
 const activeClassName = 'nav-item-active';
 const StyledLink = styled(NavLink).attrs({
-  activeClassName
+  activeClassName,
 })`
   color: #eee;
   font-size: 1.3rem;
@@ -110,7 +110,7 @@ class TopNav extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      acctDropdownShown: false
+      acctDropdownShown: false,
     };
   }
 
@@ -169,17 +169,24 @@ class TopNav extends React.Component {
             <div style={{ background: '#242729' }}>
               <StyledLink
                 style={{ marginBottom: '1em', display: 'block' }}
+                to="/bookings"
+                activeClassName={'f'}
+              >
+                 Bookings
+              </StyledLink>
+              <StyledLink
+                style={{ marginBottom: '1em', display: 'block' }}
                 to="/messenger"
                 activeClassName={'f'}
               >
-                Messenger
+                Messages
               </StyledLink>
               <StyledLink
                 style={{ marginBottom: '1em', display: 'block' }}
                 to="/preferences"
                 activeClassName={'f'}
               >
-                Settings
+                Preferences
               </StyledLink>
               <StyledLink
                 style={{ marginBottom: '1em', display: 'block' }}
@@ -204,7 +211,7 @@ class TopNav extends React.Component {
 TopNav.propTypes = {
   loggedIn: PropTypes.bool,
   user: PropTypes.object,
-  logOut: PropTypes.func
+  logOut: PropTypes.func,
 };
 
 export default TopNav;
