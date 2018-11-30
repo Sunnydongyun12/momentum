@@ -23,10 +23,17 @@ export const loadBookingsSucess = (json) => ({
 
 export const fetchBookings = () => (dispatch) => {
   dispatch(loadBookingsRequest());
+  var bookinglist = [];
   databaseRef.child('booking').on('value', function(snapshot)
   {
-    bookings.items = snapshot.val();
+    snapshot.forEach(function(childSnapshot){
+      bookinglist.push(childSnapshot.val());
+    },
+    );
+    
   });
+  bookings.items = bookinglist;
+  
   
   return dispatch(loadBookingsSucess(bookings));
   
