@@ -4,6 +4,8 @@ import { withFormik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import CTABtn from 'components/CTABtn';
 import styled from 'styled-components';
+import { databaseRef } from 'config/firebase';
+import { updatePreferences } from 'redux/user/actions';
 
 const StyledLabel = styled.label`
   text-transform: uppercase;
@@ -128,9 +130,22 @@ const formikForm = withFormik({
   }) {
     setSubmitting(false);
     resetForm();
-    updateUser(values);
-    logIn();
-    history.push('/providers');
+    var childRef = databaseRef.child('user');
+    childRef.child(values.username).on('value', function (snapshot) {
+      if (snapshot.exists()) {
+        if (snapshot.val().password == values.password && snapshot.val().email==values.email) {
+          var logUser=snapshot.val();
+          logUser.username = snapshot.key;
+          updateUser(logUser);
+          logIn();
+          history.push('/providers');
+        } else {
+          alert('Wrong email or password');
+        }
+      } else {
+        alert('This user does not exist');
+      }
+    });
   },
 })(SignInForm);
 

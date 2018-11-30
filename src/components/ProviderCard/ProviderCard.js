@@ -116,7 +116,7 @@ const ProviderCard = ({ providerId, description, zipCode, imgName, name, history
       <RightSide>
         <Heading>DESCRIPTION</Heading>
         <ProviderDescription>{description}</ProviderDescription>
-        {startDate && <ProviderDescription>from {startDate} to {endDate}</ProviderDescription>}
+        {startDate && <ProviderDescription>from {startDate} to {endDate}, awaiting confirmation</ProviderDescription>}
       </RightSide>
     </Card>
   );
