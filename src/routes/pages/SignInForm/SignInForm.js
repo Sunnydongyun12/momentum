@@ -124,7 +124,9 @@ const formikForm = withFormik({
     childRef.child(values.username).on('value', function (snapshot) {
       if (snapshot.exists()) {
         if (snapshot.val().password == values.password && snapshot.val().email==values.email) {
-          updateUser(snapshot.val());
+          var logUser=snapshot.val();
+          logUser.username = snapshot.key;
+          updateUser(logUser);
           logIn();
           history.push('/providers');
         } else {

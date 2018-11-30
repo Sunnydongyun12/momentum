@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { getPng } from 'lib/assetsUtils';
 import TagList from 'components/TagList';
 import { databaseRef } from 'config/firebase';
-
+import { addBooking } from '../../../redux/bookings/actions/index';
 const List = styled.div`
   display: grid;
   grid-template-columns: 10% 45% 35% 10%;
@@ -124,17 +124,18 @@ const provider = {
 };
 
 const handleSubmit = ({ user, match }) => () => {
+  addBooking(user.username, match.params.providerId, user.preferences.startDate, user.preferences.endDate);
   var booking = {};
   booking['username']=user.username;
   booking['providerId']= match.params.providerId;
   booking['startDate']=user.preferences.startDate;
   booking['endDate']=user.preferences.endDate;
-  
   databaseRef.child('bookings').on('value', function (snapshot) {
+    console.log(snapshot.val());
     if (snapshot.exists()) {
-      snapshot.val().push(booking);
+      databaseRef.child('booking').set(snapshot.val().push(booking));
     } else {
-      databaseRef['bookings']=[booking];
+      databaseRef.child('booking').set([booking]);
     }
   });
 };
