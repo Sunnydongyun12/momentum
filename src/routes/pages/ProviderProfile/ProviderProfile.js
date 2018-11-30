@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { getPng } from 'lib/assetsUtils';
 import TagList from 'components/TagList';
+import { databaseRef } from 'config/firebase';
 
 const List = styled.div`
   display: grid;
@@ -122,6 +123,22 @@ const provider = {
   price: 50,
 };
 
+const handleSubmit = ({ user, match }) => () => {
+  var booking = {};
+  booking['username']=user.username;
+  booking['providerId']= match.params.providerId;
+  booking['startDate']=user.preferences.startDate;
+  booking['endDate']=user.preferences.endDate;
+  
+  databaseRef.child('bookings').on('value', function (snapshot) {
+    if (snapshot.exists()) {
+      snapshot.val().push(booking);
+    } else {
+      databaseRef['bookings']=[booking];
+    }
+  });
+};
+
 export const ProviderProfile = ({ user, match, providers, users, addBooking }) => {
   const provider = providers.items[`${match.params.providerId}`];
   const { name, zipCode, description, price, tags } = provider;
@@ -148,7 +165,7 @@ export const ProviderProfile = ({ user, match, providers, users, addBooking }) =
         <TagList filters={tags} />
         <ConfirmStyle> Price: ${price}/month </ConfirmStyle>
         <NavLink to="/bookings">
-          <CTABtn onClick={() => addBooking(user.username, match.params.providerId, user.preferences.startDate, user.preferences.endDate)} style={{ width: '400px', marginTop: '10px' }} theme="pink" >
+          <CTABtn onClick={handleSubmit({ user, match })} style={{ width: '400px', marginTop: '10px' }} theme="pink" >
             Book
           </CTABtn>
         </NavLink>
