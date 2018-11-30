@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import CTABtn from 'components/CTABtn';
 import styled from 'styled-components';
 import { databaseRef } from 'config/firebase';
+import { updatePreferences } from 'redux/user/actions';
 
 const StyledLabel = styled.label`
   text-transform: uppercase;
@@ -123,7 +124,7 @@ const formikForm = withFormik({
     childRef.child(values.username).on('value', function (snapshot) {
       if (snapshot.exists()) {
         if (snapshot.val().password == values.password && snapshot.val().email==values.email) {
-          updateUser(values);
+          updateUser(snapshot.val());
           logIn();
           history.push('/providers');
         } else {
