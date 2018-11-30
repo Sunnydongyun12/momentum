@@ -147,8 +147,8 @@ export const ProviderProfile = ({ user, match, providers, users, addBooking }) =
       <Section23>
         <TagList filters={tags} />
         <ConfirmStyle> Price: ${price}/month </ConfirmStyle>
-        <NavLink to="/bookings" onClick={() => addBooking(user.username, match.params.providerId, user.preferences.startDate, user.preferences.endDate)}>
-          <CTABtn style={{ width: '400px', marginTop: '10px' }} theme="pink" >
+        <NavLink to="/bookings">
+          <CTABtn onClick={() => addBooking(user.username, match.params.providerId, user.preferences.startDate, user.preferences.endDate)} style={{ width: '400px', marginTop: '10px' }} theme="pink" >
             Book
           </CTABtn>
         </NavLink>
