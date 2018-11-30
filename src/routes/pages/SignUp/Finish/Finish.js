@@ -1,3 +1,4 @@
+import { databaseRef } from 'config/firebase';
 import React from 'react';
 import styled from 'styled-components';
 import Stepper from 'components/Stepper';
@@ -29,7 +30,14 @@ const SpecialText = styled.div`
   color: ${blue};
 `;
 
-const handleSubmit = ({ history, logIn }) => () => {
+const handleSubmit = ({ user, history, logIn }) => () => {
+  var newUser = {};
+  newUser[user.username] = {};
+  newUser[user.username]['email'] = user.email;
+  newUser[user.username]['password'] = user.password;
+  newUser[user.username]['preferences'] = user.preferences;
+
+  databaseRef.child('user').set(newUser);
   logIn();
   history.push('/providers');
 };
@@ -42,7 +50,7 @@ export const Finish = ({ user, history, logIn }) => (
     <StyledP>Click on the <SpecialText>Previous</SpecialText> button below to edit your information.</StyledP>
 
     <CTABtn theme="outlineBlue" style={{ height: '50px', marginTop: '1em' }} onClick={() => history.goBack()}>Previous</CTABtn>
-    <CTABtn theme="pink" style={{ height: '50px', marginTop: '1em' }} onClick={handleSubmit({ history, logIn })}>Submit</CTABtn>
+    <CTABtn theme="pink" style={{ height: '50px', marginTop: '1em' }} onClick={handleSubmit({ user, history, logIn })}>Submit</CTABtn>
   </Content>
 );
 
