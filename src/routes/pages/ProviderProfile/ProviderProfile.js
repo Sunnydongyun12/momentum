@@ -130,14 +130,7 @@ const handleSubmit = ({ user, match }) => () => {
   booking['providerId']= match.params.providerId;
   booking['startDate']=user.preferences.startDate;
   booking['endDate']=user.preferences.endDate;
-  databaseRef.child('bookings').on('value', function (snapshot) {
-    console.log(snapshot.val());
-    if (snapshot.exists()) {
-      databaseRef.child('booking').set(snapshot.val().push(booking));
-    } else {
-      databaseRef.child('booking').set([booking]);
-    }
-  });
+  databaseRef.child('booking').push(booking);
 };
 
 export const ProviderProfile = ({ user, match, providers, users, addBooking }) => {

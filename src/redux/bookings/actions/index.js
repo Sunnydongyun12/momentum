@@ -1,3 +1,4 @@
+import { databaseRef } from 'config/firebase';
 export const ADD_BOOKING = 'ADD_BOOKING';
 export const LOAD_BOOKINGS_REQUEST = 'LOAD_BOOKINGS_REQUEST';
 export const LOAD_BOOKINGS_SUCCESS = 'LOAD_BOOKINGS_SUCCESS';
@@ -22,7 +23,11 @@ export const loadBookingsSucess = (json) => ({
 
 export const fetchBookings = () => (dispatch) => {
   dispatch(loadBookingsRequest());
-
+  databaseRef.child('booking').on('value', function(snapshot)
+  {
+    bookings.items = snapshot.val();
+  });
+  
   return dispatch(loadBookingsSucess(bookings));
   
   // return fetch('http://localhost:5000/providers')
