@@ -37,7 +37,7 @@ const handleSubmit = ({ user, history, logIn }) => () => {
   newUser[user.username]['password'] = user.password;
   newUser[user.username]['preferences'] = user.preferences;
 
-  databaseRef.child('user').set(newUser);
+  databaseRef.child('user').update(newUser);
   logIn();
   history.push('/providers');
 };
