@@ -5,6 +5,8 @@ import loggedIn from './loggedIn/reducer';
 import user from './user/reducer';
 import providerFilters from './providerFilters/reducer';
 import providersReducers from './providers/reducer';
+import bookings from './bookings/reducer';
+import ratings from './ratings/reducer';
 
 const initialState = {
   query: '',
@@ -18,6 +20,8 @@ const reducer = combineReducers({
   loggedIn,
   user,
   providerFilters,
+  bookings,
+  ratings,
   ...providersReducers,
 });
 

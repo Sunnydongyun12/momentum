@@ -1,21 +1,22 @@
 export const ADD_BOOKING = 'ADD_BOOKING';
 export const LOAD_BOOKINGS_REQUEST = 'LOAD_BOOKINGS_REQUEST';
-export const LOAD_RATINGS_SUCCESS = 'LOAD_RATINGS_SUCCESS';
+export const LOAD_BOOKINGS_SUCCESS = 'LOAD_BOOKINGS_SUCCESS';
 
 // user_id, provider_id, rating
-const bookings = [{ userId: 0, providerId: 0, startDate: 4, endDate: 10 }];
+const bookings = [{ username: 'asdf', providerId: 0, startDate: 4, endDate: 10 }];
 
-export const addBooking = (userId, providerId, rating) => ({
-  type: ADD_BOOKING,
-  booking: { userId, providerId, rating },
-});
+export const addBooking = (username, providerId, startDate, endDate) => {
+  return ({
+    type: ADD_BOOKING,
+    booking: { username, providerId, startDate, endDate },
+  });};
 
 export const loadBookingsRequest = () => ({
   type: LOAD_BOOKINGS_REQUEST,
 });
 
 export const loadBookingsSucess = (json) => ({
-  type: LOAD_RATINGS_SUCCESS,
+  type: LOAD_BOOKINGS_SUCCESS,
   bookings: json,
 });
 

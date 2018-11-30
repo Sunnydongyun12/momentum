@@ -38,7 +38,7 @@ const Middle = styled.div`
 
 const RightSide = styled.div`
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto auto;
   padding: 0 10px;
 `;
 
@@ -86,7 +86,8 @@ const ActionBtn = styled(CTABtn)`
   width: 200px;
 `;
 
-const ProviderCard = ({ providerId, description, zipCode, imgName, name, history }) => {
+const ProviderCard = ({ providerId, description, zipCode, imgName, name, history, startDate, endDate }) => {
+  
   return (
     <Card>
       <ImgBackground>
@@ -106,17 +107,16 @@ const ProviderCard = ({ providerId, description, zipCode, imgName, name, history
           <span>View Profile</span>
         </ActionBtn>
 
-        <NavLink to="/messenger">
-          <ActionBtn theme="outlineBlue">
-            <TextIcon style={{ marginLeft: '-20px' }} icon="envelope" />
-            <span>Message</span>
-          </ActionBtn>
-        </NavLink>
+        <ActionBtn theme="outlineBlue" onClick={() => history.push('/messenger')}>
+          <TextIcon style={{ marginLeft: '-20px' }} icon="envelope" />
+          <span>Message</span>
+        </ActionBtn>
       </Middle>
 
       <RightSide>
         <Heading>DESCRIPTION</Heading>
         <ProviderDescription>{description}</ProviderDescription>
+        {startDate && <ProviderDescription>from {startDate} to {endDate}</ProviderDescription>}
       </RightSide>
     </Card>
   );

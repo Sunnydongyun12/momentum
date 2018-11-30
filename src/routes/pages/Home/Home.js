@@ -45,7 +45,7 @@ export const Home = ({ loggedIn }) => {
           margin: '0',
           paddingTop: '2em',
           fontWeight: '600',
-          fontSize: '4em'
+          fontSize: '4em',
         }}
       >
         Momentum
@@ -61,7 +61,7 @@ export const Home = ({ loggedIn }) => {
           backgroundColor: '#242729',
           fontSize: '1.2em',
           lineHieght: '1.2em',
-          marginBottom: '1em'
+          marginBottom: '1em',
         }}
       >
         Ever wanted to store something locally, but the solutions you found were
@@ -75,7 +75,7 @@ export const Home = ({ loggedIn }) => {
 };
 
 Home.propTypes = {
-  loggedIn: PropTypes.bool
+  loggedIn: PropTypes.bool,
 };
 
 export default Home;

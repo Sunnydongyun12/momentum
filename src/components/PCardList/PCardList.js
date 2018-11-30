@@ -18,26 +18,36 @@ const numOverlapping = (list1, list2) => {
 
 // add the tag filtering stuff here
 class PCardList extends React.Component {
-  providerList = [];
 
   componentDidMount() {
     this.props.fetchProviders();
+    this.props.fetchBookings();
   }
 
   render() {
-    const { providerFilters, providers } = this.props;
+    const providerList = [];
+    const { providerFilters, providers, booking, bookings, user } = this.props;
 
-    if (providers.isFetching) {
+    if (providers.isFetching || bookings.isFetching) {
       return (<div>fetching</div>);
     }
 
     for (const key of Object.keys(providers.items)) {
-      this.providerList.push({ providerId: key, ...providers.items[key] });
+      if (booking) {
+        for (let i = 0; i < bookings.items.length; i++) {
+          if (bookings.items[i].providerId == key && bookings.items[i].username == user.username) {
+            providerList.push({ providerId: key, ...providers.items[key], startDate: bookings.items[i].startDate, endDate: bookings.items[i].endDate  });
+            break;
+          }
+        }
+      } else {
+        providerList.push({ providerId: key, ...providers.items[key] });
+      }
     }
     
     return (
       <List>
-        {this.providerList
+        {providerList
           .filter(({ tags }) => numOverlapping(tags, providerFilters) === providerFilters.length)
           .map(props => (
             <ProviderCard {...props} key={props.providerId} />
@@ -51,6 +61,7 @@ PCardList.propTypes = {
   providerFilters: PropTypes.arrayOf(PropTypes.string),
   providers: PropTypes.object,
   fetchProviders: PropTypes.func,
+  booking: PropTypes.bool,
 };
 
 export default PCardList;

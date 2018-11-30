@@ -54,6 +54,18 @@ const SignInForm = ({ user, values, errors, touched, isSubmitting }) => (
 
     <div>
       <div>
+        <StyledLabel htmlFor="username">Email</StyledLabel>
+      </div>
+      <TextInput
+        type="text"
+        name="username"
+        style={{ width: '300px' }}
+        placeholder="username"
+      />
+    </div>
+
+    <div>
+      <div>
         <StyledLabel htmlFor="password">Password</StyledLabel>
       </div>
       <TextInput
@@ -86,6 +98,7 @@ const formikForm = withFormik({
   mapPropsToValues({ user }) {
     return {
       email: (user && user.email) || '',
+      username: (user && user.username) || '',
       password: '',
     };
   },
@@ -93,6 +106,9 @@ const formikForm = withFormik({
     email: yup
       .string()
       .required('Email is required.'),
+    username: yup
+      .string()
+      .required('Username is required.'),
     password: yup
       .string()
       .required('Password is required.'),

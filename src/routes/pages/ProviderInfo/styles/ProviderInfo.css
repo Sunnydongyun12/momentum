@@ -1,7 +1,0 @@
-.ProviderInfo {
-  display: grid;
-  grid-template-rows: 50px 1fr; }
-  .ProviderInfo__content {
-    box-sizing: border-box;
-    padding-left: 60px;
-    padding-right: 60px; }

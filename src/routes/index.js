@@ -17,6 +17,7 @@ import ProviderProfile from 'routes/pages/ProviderProfile';
 import { Switch } from 'react-router';
 import Book from './pages/Book';
 import Messenger from 'routes/pages/Messenger';
+import Bookings from 'routes/pages/Bookings';
 
 import { ProtectedRoute } from './ProtectedRoute';
 
@@ -37,15 +38,10 @@ class Root extends React.Component {
               <ProtectedRoute exact path="/providers" render={ProviderList} />
               <ProtectedRoute exact path="/preferences" render={Preferences} />
 
-              <Route
-                exact
-                path="/signup/preferences"
-                render={SignUpPreferences}
-              />
+              <Route exact path="/signup/preferences" render={SignUpPreferences} />
               <Route exact path="/signup/finish" render={Finish} />
               <Route exact path="/signup" render={SignUp} />
-              <Route exact path="/signup" render={SignUp} />
-
+              <Route exact path="/bookings" render={Bookings} />
               <Route exact path="/signin" render={SignIn} />
               <Route exact path="/book" render={Book} />
               <Route exact path="/messenger" render={Messenger} />
