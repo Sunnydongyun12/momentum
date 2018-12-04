@@ -6,7 +6,9 @@ import PropTypes from 'prop-types';
 import { getPng } from 'lib/assetsUtils';
 import TagList from 'components/TagList';
 import { databaseRef } from 'config/firebase';
+import Avatar from 'react-avatar';
 import { addBooking } from '../../../redux/bookings/actions/index';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const List = styled.div`
   display: grid;
   grid-template-columns: 10% 45% 35% 10%;
@@ -14,6 +16,7 @@ const List = styled.div`
   justify-items: flex-start;
   align-items: center;
   margin-top: 2em;
+  padding-bottom: 100px;
 `;
 const Section12 = styled.div`
   grid-row: 1;
@@ -80,12 +83,11 @@ const TextStyle = styled.div`
   color: rgb(100, 100, 100);
   padding-left: 3em;
   margin-bottom: 20px;
+  padding-top: 10px;
 `;
-
 const ImgBackground = styled.div`
   background: #eee;
 `;
-
 const ProfilePic = styled.img`
   display: block;
   max-width: 70%;
@@ -93,6 +95,7 @@ const ProfilePic = styled.img`
   height: auto;
   align-self: center;
   background: #eee;
+  background-size: 100%;
 `;
 const ConfirmStyle = styled.div`
   text-align: left;
@@ -104,10 +107,48 @@ const ConfirmStyle = styled.div`
   word-spacing: 10px;
   margin-bottom: 10px;
 `;
+const HostAvatar = styled.div`
+  grid-area: HostAvatar; 
+  padding: 0 0 0 40px;
+`;
+const HostInfo = styled.div`
+  grid-area: HostInfo; 
+  font-size: 15px;
+  font-weight: 200;
+  color: rgb(100, 100, 100);
+  text-align: left;
+`;
+const HostName = styled.div`
+  grid-area: HostName; 
+  font-size: 15px;
+  font-weight: 400;
+  color: rgb(50,50,50);
+  text-align: left;
+`;
+const MessageMe = styled.div`
+  grid-area: MessageMe; 
+  text-align: left;
+`; 
+const ProviderStyle = styled.div`
+  display: grid;
+  grid-template-areas:
+    'HostAvatar HostName MessageMe'
+    'HostAvatar HostInfo MessageMe';
+  grid-template-columns: 110px 200px 100px;
+  padding: 10px;
+`;
+const ActionBtn = styled(CTABtn)`
+  width: 180px;
+  background: white;
+`;
+const TextIcon = styled(FontAwesomeIcon)`
+  margin-right: 10px;
+`;
+
 
 const provider = {
   name: 'myname',
-  zipCode: 9021,
+  zipCode: 90021,
   description: `Please read everything below before booking. I am Durian,
   currently a third year physics PhD student at UCLA.I have been
   providing storage solutions on Momentum for more than two years.I take
@@ -133,9 +174,9 @@ const handleSubmit = ({ user, match }) => () => {
   databaseRef.child('booking').push(booking);
 };
 
-export const ProviderProfile = ({ user, match, providers, users, addBooking }) => {
+export const ProviderProfile = ({ user, match, providers, users, addBooking, history }) => {
   const provider = providers.items[`${match.params.providerId}`];
-  const { name, zipCode, description, price, tags } = provider;
+  const { name, zipCode, description, price, tags, imgName, hostName, hostInfo } = provider;
   
   return (
     <List>
@@ -145,6 +186,26 @@ export const ProviderProfile = ({ user, match, providers, users, addBooking }) =
         <ZipcodeStyle> {zipCode} </ZipcodeStyle>
       </Section12>
       <Section22>
+        <DimensionStyle> Host </DimensionStyle>
+        <ProviderStyle>
+          <HostAvatar>
+            <Avatar
+              name={hostName}
+              size="60"
+              round={true}
+              textSizeRatio="2"
+              color={Avatar.getRandomColor('sitebase', ['#AB2F52', '#E55D4A', '#E88554', '#4194A6', '#82CCD9', '#FFCC6B'])}
+            />
+          </HostAvatar>
+          <HostName>{hostName} </HostName>
+          <HostInfo>{hostInfo} </HostInfo> 
+          <MessageMe>        
+            <ActionBtn theme="outlineBlue" onClick={() => history.push('/messenger')}>
+              <TextIcon style={{ marginLeft: '-20px' }} icon="envelope" />
+              <span>Message</span>
+            </ActionBtn>
+          </MessageMe>
+        </ProviderStyle>
         <DimensionStyle> Description </DimensionStyle>
         <TextStyle>
           {description}
@@ -152,14 +213,14 @@ export const ProviderProfile = ({ user, match, providers, users, addBooking }) =
       </Section22>
       <Section13>
         <ImgBackground>
-          <ProfilePic alt={'test'} src={getPng('test')} />
+          <ProfilePic alt={imgName} src={getPng(imgName)} />
         </ImgBackground>
       </Section13>
       <Section23>
         <TagList filters={tags} />
         <ConfirmStyle> Price: ${price}/month </ConfirmStyle>
         <NavLink to="/bookings">
-          <CTABtn onClick={handleSubmit({ user, match })} style={{ width: '400px', marginTop: '10px' }} theme="pink" >
+          <CTABtn onClick={handleSubmit({ user, match })} style={{ width: '300px', marginTop: '10px' }} theme="pink" >
             Book
           </CTABtn>
         </NavLink>
@@ -171,5 +232,6 @@ export const ProviderProfile = ({ user, match, providers, users, addBooking }) =
 ProviderProfile.PropTypes = {
   providers: PropTypes.object,
   users: PropTypes.object,
+  history: PropTypes.object,
 };
 export default ProviderProfile;

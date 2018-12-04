@@ -70,17 +70,8 @@ class Minimized extends React.Component {
         >
           <SideNav.Toggle onClick={this.ToggleshowMax} id="1" ref={input => this.inputElement = input} />
           <SideNav.Nav style={{ width: '80px' }}>
-            <NavItem eventKey="p1" onClick={this.TogglekeepMax}>
-              <NavIcon>
-                <Avatar
-                  name="Jon Smith"
-                  src="https://randomuser.me/api/portraits/men/32.jpg"
-                  size="40"
-                  round={true}
-                />
-              </NavIcon>
-            </NavItem>
-            <NavItem eventKey="p2" onClick={this.TogglekeepMax} >
+
+            <NavItem eventKey="p1" onClick={this.TogglekeepMax} >
               <NavIcon>
                 <Avatar
                   name="Olivia Black"
@@ -90,7 +81,18 @@ class Minimized extends React.Component {
                 />
               </NavIcon>
             </NavItem>
-            <NavItem eventKey="p3" onClick={this.TogglekeepMax}>
+
+            {/* <NavItem eventKey="p2" onClick={this.TogglekeepMax}>
+              <NavIcon>
+                <Avatar
+                  name="Jon Smith"
+                  src="https://randomuser.me/api/portraits/men/32.jpg"
+                  size="40"
+                  round={true}
+                />
+              </NavIcon>
+            </NavItem> */}
+            {/* <NavItem eventKey="p3" onClick={this.TogglekeepMax}>
               <NavIcon>
                 <Avatar
                   name="Foo Bar"
@@ -99,7 +101,7 @@ class Minimized extends React.Component {
                   round={true}
                 />
               </NavIcon>
-            </NavItem>
+            </NavItem> */}
           </SideNav.Nav>
         </SideNav>
         {this.state.showMax && (

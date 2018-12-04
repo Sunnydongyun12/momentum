@@ -34,24 +34,31 @@ const Middle = styled.div`
   display: grid;
   grid-template-rows: auto auto 40px 40px 10px;
   grid-row-gap: 10px;
+  overflow: hidden;
+
 `;
 
 const RightSide = styled.div`
   display: grid;
   grid-template-rows: auto auto auto;
   padding: 0 10px;
+  overflow: hidden;
 `;
 
 const ProviderDescription = styled.div`
   text-align: left;
   color: #5a5c59;
+  padding: auto auto 15px;
+  overflow: hidden;
 `;
 
 const Heading = styled.div`
+  width: 230px;
+  max-height: 30px;
   text-align: left;
   font-size: 18px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 15px;
+  margin-bottom: 5px;
   text-transform: uppercase;
   font-weight: 600;
   overflow: hidden;
@@ -83,7 +90,7 @@ const ProfilePic = styled.img`
 `;
 
 const ActionBtn = styled(CTABtn)`
-  width: 200px;
+  width: 190px;
 `;
 
 const ProviderCard = ({ providerId, description, zipCode, imgName, name, history, startDate, endDate }) => {
@@ -115,7 +122,7 @@ const ProviderCard = ({ providerId, description, zipCode, imgName, name, history
 
       <RightSide>
         <Heading>DESCRIPTION</Heading>
-        <ProviderDescription>{description}</ProviderDescription>
+        <ProviderDescription>{`${description.split(' ').slice(0, 30).join(' ')}...`}</ProviderDescription>
         {startDate && <ProviderDescription>from {startDate} to {endDate}, awaiting confirmation</ProviderDescription>}
       </RightSide>
     </Card>
