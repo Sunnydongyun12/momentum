@@ -10,7 +10,47 @@ import {
   MessageMedia,
 } from '@livechat/ui-kit';
 
+
 const Mp1 = () => {
+  return (
+    <MessageGroup
+      avatar="https://randomuser.me/api/portraits/women/21.jpg"
+      onlyFirstWithMeta
+    >
+      <Message authorName="Olivia Black" date="10:37">
+        {/* <MessageMedia>
+          <img src="http://picsum.photos/223" />
+        </MessageMedia> */}
+        <MessageText
+          style={{
+            background: 'rgb(250, 137, 137)',
+            borderRadius: '5px',
+            border: '1px solid gb(250, 137, 137)',
+            padding: '15px',
+            width: '300px',
+          }}
+        >
+          Hey my friend!
+        </MessageText>
+      </Message>
+      <Message authorName="Olivia Black" date="21:37">
+        <MessageText
+          style={{
+            background: 'rgb(250, 137, 137)',
+            borderRadius: '5px',
+            border: '1px solid gb(250, 137, 137)',
+            padding: '15px',
+            width: '300px',
+          }}
+        >
+          How can I help you?
+        </MessageText>
+      </Message>
+    </MessageGroup>
+  );
+};
+
+const Mp2 = () => {
   return (
     <React.Fragment>
       <MessageGroup
@@ -102,59 +142,6 @@ const Mp1 = () => {
         </Message>
       </MessageGroup>
     </React.Fragment >
-
-
-  );
-};
-const Mp2 = () => {
-  return (
-    <MessageGroup
-      avatar="https://randomuser.me/api/portraits/women/21.jpg"
-      onlyFirstWithMeta
-    >
-      <Message authorName="Olivia Black" date="21:37">
-        <MessageMedia>
-          <img src="http://picsum.photos/223" />
-        </MessageMedia>
-        <MessageText
-          style={{
-            background: 'rgb(250, 137, 137)',
-            borderRadius: '5px',
-            border: '1px solid gb(250, 137, 137)',
-            padding: '15px',
-            width: '300px',
-          }}
-        >
-          Hey my friend!
-        </MessageText>
-      </Message>
-      <Message authorName="Olivia Black" date="21:37">
-        <MessageText
-          style={{
-            background: 'rgb(250, 137, 137)',
-            borderRadius: '5px',
-            border: '1px solid gb(250, 137, 137)',
-            padding: '15px',
-            width: '300px',
-          }}
-        >
-          Hi!
-        </MessageText>
-      </Message>
-      <Message authorName="Olivia Black" date="21:37">
-        <MessageText
-          style={{
-            background: 'rgb(250, 137, 137)',
-            borderRadius: '5px',
-            border: '1px solid gb(250, 137, 137)',
-            padding: '15px',
-            width: '300px',
-          }}
-        >
-          Hello, are you there?
-        </MessageText>
-      </Message>
-    </MessageGroup>
   );
 };
 
