@@ -213,7 +213,7 @@ export const ProviderProfile = ({ user, match, providers, users, addBooking, his
       </Section22>
       <Section13>
         <ImgBackground>
-          <ProfilePic alt={imgName} src={getPng(imgName)} />
+          <ProfilePic alt={'test'} src={getPng(imgName)} />
         </ImgBackground>
       </Section13>
       <Section23>
