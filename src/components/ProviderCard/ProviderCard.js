@@ -35,7 +35,6 @@ const Middle = styled.div`
   grid-template-rows: auto auto 40px 40px 10px;
   grid-row-gap: 10px;
   overflow: hidden;
-
 `;
 
 const RightSide = styled.div`
