@@ -65,7 +65,7 @@ class Maximized extends React.Component {
           <PreviousMessage selection={selection} />
           <Row reverse>
             <Avatar
-              src="https://d3iw72m71ie81c.cloudfront.net/8912fe22-7970-4e15-a3a1-abef9f2fb4b5"
+              src="https://randomuser.me/api/portraits/men/32.jpg"
               round={true}
               size="30"
             />
