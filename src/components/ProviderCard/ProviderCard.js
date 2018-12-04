@@ -97,7 +97,7 @@ const ProviderCard = ({ providerId, description, zipCode, imgName, name, history
   return (
     <Card>
       <ImgBackground>
-        <ProfilePic alt={'test'} src={getPng('test')} />
+        <ProfilePic alt={'test'} src={getPng(imgName)} />
       </ImgBackground>
 
       <Middle>
